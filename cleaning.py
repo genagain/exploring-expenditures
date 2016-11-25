@@ -3,7 +3,7 @@ import csv
 import ipdb
 
 def replace_description(token, replacement, expenditures):
-  idx = descriptions.str.contains(token)
+  idx = descriptions.str.contains(token,case=False)
   expenditures.ix[idx, "Clean Description"] = replacement
   return expenditures
 
@@ -19,39 +19,26 @@ expenditures['Clean Description'] = expenditures['Clean Description'].str.extrac
 expenditures["Clean Description"]=expenditures["Clean Description"].str.lstrip()
 expenditures["Clean Description"]=expenditures["Clean Description"].str.rstrip()
 
-expenditures = replace_description("Digit", "DIGIT", expenditures)
+token_replacements = {
+    "Digit" : "DIGIT",
+    "LYFT" : "LYFT",
+    "DOORDASH" : "DOORDASH",
+    "Audible" : "AUDIBLE",
+    "SEAMLESS" : "SEAMLESS",
+    "SUBWAY" : "SUBWAY",
+    "amazon" : "AMAZON",
+    "LICKS" : "JP LICKS",
+    "CLOVER FOOD LAB" : "CLOVER FOOD LAB",
+    "GRUBHUB" : "GRUBHUB",
+    "STARBUCKS" : "STARBUCKS",
+    "WOLLASTON'S" : "WOLLASTON'S",
+    "Spotify" : "SPOTIFY",
+    "INSTACART" : "INSTACART"
+    }
 
-#TODO notice that the day of the week for the lyft transactions isn't usually the same as the day of the week of the index value
-expenditures = replace_description("LYFT", "LYFT", expenditures)
+for token, replacement in token_replacements.iteritems():
+  expenditures = replace_description(token, replacement, expenditures)
 
-expenditures = replace_description("DOORDASH", "DOORDASH", expenditures)
-
-expenditures = replace_description("Audible", "AUDIBLE", expenditures)
-
-expenditures = replace_description("SEAMLESS", "SEAMLESS", expenditures)
-
-expenditures = replace_description("SUBWAY", "SUBWAY", expenditures)
-
-idx = descriptions.str.contains("amazon",case=False)
-expenditures.ix[idx, "Clean Description"] = "AMAZON"
-
-#TODO account for J.P Licks as well
-expenditures = replace_description("LICKS", "JP LICKS", expenditures)
-
-expenditures = replace_description("CLOVER FOOD LAB", "CLOVER FOOD LAB", expenditures)
-
-expenditures = replace_description("GRUBHUB", "GRUBHUB", expenditures)
-
-expenditures = replace_description("STARBUCKS", "STARBUCKS", expenditures)
-
-expenditures = replace_description("WOLLASTON'S", "WOLLASTON'S", expenditures)
-
-expenditures = replace_description("Spotify", "SPOTIFY", expenditures)
-
-expenditures = replace_description("INSTACART", "INSTACART", expenditures)
-
-
-ipdb.set_trace()
 transaction_frequency = {}
 for row_index, row in expenditures.iterrows(): 
   clean_description = str(row['Clean Description'])
