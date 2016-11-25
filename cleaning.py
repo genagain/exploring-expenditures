@@ -39,12 +39,4 @@ token_replacements = {
 for token, replacement in token_replacements.iteritems():
   expenditures = replace_description(token, replacement, expenditures)
 
-transaction_frequency = {}
-for row_index, row in expenditures.iterrows(): 
-  clean_description = str(row['Clean Description'])
-  if clean_description not in transaction_frequency.keys():
-    transaction_frequency[clean_description] = 1
-  else:
-    transaction_frequency[clean_description] += 1
-#for merchant in transaction_frequency.keys():
-
+expenditures.to_csv('clean_transactions.csv', columns = ['Clean Description', 'Amount', 'Running'])
