@@ -2,6 +2,10 @@ import pandas as pd
 import csv
 import ipdb
 
+def replace_description(token, replacement, expenditures):
+  idx = descriptions.str.contains(token)
+  expenditures.ix[idx, "Clean Description"] = replacement
+  return expenditures
 
 expenditures = pd.DataFrame.from_csv('stmt.csv')
 # remove weird running total nan values
@@ -15,51 +19,39 @@ expenditures['Clean Description'] = expenditures['Clean Description'].str.extrac
 expenditures["Clean Description"]=expenditures["Clean Description"].str.lstrip()
 expenditures["Clean Description"]=expenditures["Clean Description"].str.rstrip()
 
-idx = descriptions.str.contains("Digit")
-expenditures.ix[idx, "Clean Description"] = "DIGIT"
+expenditures = replace_description("Digit", "DIGIT", expenditures)
 
 #TODO notice that the day of the week for the lyft transactions isn't usually the same as the day of the week of the index value
-#expenditures['Clean Description'] = expenditures['Clean Description'].str.replace('\W\*RIDE\W\D{3}','')
-idx = descriptions.str.contains("LYFT")
-expenditures.ix[idx, "Clean Description"] = "LYFT"
+expenditures = replace_description("LYFT", "LYFT", expenditures)
 
-# TODO write a nice method for all of these
-idx = descriptions.str.contains("DOORDASH")
-expenditures.ix[idx, "Clean Description"] = "DOORDASH"
+expenditures = replace_description("DOORDASH", "DOORDASH", expenditures)
 
-idx = descriptions.str.contains("Audible")
-expenditures.ix[idx, "Clean Description"] = "Audible"
+expenditures = replace_description("Audible", "AUDIBLE", expenditures)
 
-idx = descriptions.str.contains("SEAMLESS")
-expenditures.ix[idx, "Clean Description"] = "SEAMLESS"
+expenditures = replace_description("SEAMLESS", "SEAMLESS", expenditures)
 
-idx = descriptions.str.contains("SUBWAY")
-expenditures.ix[idx, "Clean Description"] = "SUBWAY"
+expenditures = replace_description("SUBWAY", "SUBWAY", expenditures)
 
 idx = descriptions.str.contains("amazon",case=False)
 expenditures.ix[idx, "Clean Description"] = "AMAZON"
 
 #TODO account for J.P Licks as well
-idx = descriptions.str.contains("LICKS")
-expenditures.ix[idx, "Clean Description"] = "JP LICKS"
+expenditures = replace_description("LICKS", "JP LICKS", expenditures)
 
-idx = descriptions.str.contains("CLOVER FOOD LAB")
-expenditures.ix[idx, "Clean Description"] = "CLOVER FOOD LAB"
+expenditures = replace_description("CLOVER FOOD LAB", "CLOVER FOOD LAB", expenditures)
 
-idx = descriptions.str.contains("GRUBHUB")
-expenditures.ix[idx, "Clean Description"] = "GRUBHUB"
+expenditures = replace_description("GRUBHUB", "GRUBHUB", expenditures)
 
-idx = descriptions.str.contains("STARBUCKS")
-expenditures.ix[idx, "Clean Description"] = "STARBUCKS"
+expenditures = replace_description("STARBUCKS", "STARBUCKS", expenditures)
 
-idx = descriptions.str.contains("WOLLASTON'S")
-expenditures.ix[idx, "Clean Description"] = "WOLLASTON'S"
+expenditures = replace_description("WOLLASTON'S", "WOLLASTON'S", expenditures)
 
-idx = descriptions.str.contains("Spotify")
-expenditures.ix[idx, "Clean Description"] = "Spotify"
+expenditures = replace_description("Spotify", "SPOTIFY", expenditures)
 
-idx = descriptions.str.contains("INSTACART")
-expenditures.ix[idx, "Clean Description"] = "INSTACART"
+expenditures = replace_description("INSTACART", "INSTACART", expenditures)
+
+
+ipdb.set_trace()
 transaction_frequency = {}
 for row_index, row in expenditures.iterrows(): 
   clean_description = str(row['Clean Description'])
@@ -69,4 +61,3 @@ for row_index, row in expenditures.iterrows():
     transaction_frequency[clean_description] += 1
 #for merchant in transaction_frequency.keys():
 
-ipdb.set_trace()
