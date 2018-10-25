@@ -13,6 +13,7 @@ The `income-statement.py` file calculates my income and breaks down my expenses 
   * Groceries
   * Eating out
   * Utilities
+  * Credit card
   * Net Savings
   * Miscellaneous
 
