@@ -1,4 +1,5 @@
 stmt.csv
 clean_transactions.csv
 env
+venv
 transactions.pickle
