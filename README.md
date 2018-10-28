@@ -15,6 +15,8 @@ The `income-statement.py` file calculates my income and breaks down my expenses 
   * Utilities
   * Credit card
   * Net Savings
+  * Net Qapital Savings
+  * Net Venmo
   * Miscellaneous
 
 The `balance-sheet.py` calculates my assets and liabilities.
