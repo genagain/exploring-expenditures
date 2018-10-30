@@ -7,16 +7,15 @@ The `cleaning.py` file cleans the data and writes the cleaned data to a new file
 The `monthly_spending.py` file then calculates my monthly expenditures and plots them on a bar chart, using the `clean_transactions.csv` file.
 
 The `income-statement.py` file calculates my income and breaks down my expenses into the following categories:
-  * Food
-  * Transportation
+  * Transportation - DONE
   * Subscriptions
   * Groceries
   * Eating out
-  * Utilities
-  * Credit card
-  * Net Savings
-  * Net Qapital Savings
-  * Net Venmo
+  * Utilities -  DONE
+  * Credit card - DONE
+  * Net Savings - DONE
+  * Net Qapital Savings - DONE
+  * Net Venmo - DONE
   * Miscellaneous
 
 The `balance-sheet.py` calculates my assets and liabilities.
