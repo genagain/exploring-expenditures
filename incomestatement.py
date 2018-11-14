@@ -35,14 +35,13 @@ def get_net_qapital_breakdown(transactions):
 
     return breakdown
 
-# TODO change to investments
-def get_net_savings(transactions):
-    qapital_savings = get_net_qapital_savings(transactions)
+def get_investments(transactions):
+    qapital_investments= get_net_qapital_breakdown(transactions)['investments']
     vanguard_idx = transactions.original_description.str.contains('VANGUARD')
     vanguard_savings = transactions[vanguard_idx].amount.sum()
     business_idx = (transactions.original_description.str.contains('Online scheduled transfer from CHK 4604')) & (transactions.account_name == 'Business Fundamentals Chk')
     business_investment = transactions[business_idx].amount.sum()
-    return np.round(qapital_savings + vanguard_savings + business_investment)
+    return np.round(qapital_investments+ vanguard_savings + business_investment)
 
 def get_credit_card_expenses(transactions):
     idx = transactions.account_name == 'nRewards Visa'
@@ -81,7 +80,10 @@ def get_fixed_costs(transactions):
     utilities = get_utilities(transactions)
     phone_bill = get_phone_bill(transactions)
     groceries = get_groceries(transactions)
-    # TODO use qapital breakdown function
-    net_qapital_savings = get_net_qapital_savings(transactions)
-    fixed_savings = 540 if net_qapital_savings >= 540 else net_qapital_savings
-    return rent + utilities + phone_bill + groceries + fixed_savings
+    breakdown = get_net_qapital_breakdown(transactions)
+
+    return rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
+
+def get_savings_goals(transactions):
+    breakdown = get_net_qapital_breakdown(transactions)
+    return breakdown['savings_goals']

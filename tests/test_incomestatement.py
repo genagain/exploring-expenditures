@@ -5,6 +5,7 @@ from collections import OrderedDict
 
 @pytest.fixture
 def test_transactions():
+  # TODO verify in B of A and Mint transactions for every single assertion
   july = pd.read_pickle('tests/test_july_2018.pickle')
   august = pd.read_pickle('tests/test_august_2018.pickle')
   september =  pd.read_pickle('tests/test_september_2018.pickle')
@@ -49,13 +50,6 @@ def test_get_net_qapital_breakdown(test_transactions):
     month = expected_breakdown.pop('transactions')
     breakdown = incomestatement.get_net_qapital_breakdown(month)
     assert breakdown == expected_breakdown
-
-# TODO change to get investments
-def test_get_net_savings(test_transactions):
-  july, august, september = test_transactions
-  assert incomestatement.get_net_savings(july) == 2240.0
-  assert incomestatement.get_net_savings(august) == 1379.0
-  assert incomestatement.get_net_savings(september) == -182.0
 
 def test_get_net_venmo(test_transactions):
   july, august, september = test_transactions
@@ -105,4 +99,15 @@ def test_fixed_costs(test_transactions):
     assert incomestatement.get_fixed_costs(month) == rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
     assert incomestatement.get_fixed_costs(month) == fixed_cost['expected_cost']
 
-# TODO test get savings goals
+def test_get_investments(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_investments(july) == 525
+  assert incomestatement.get_investments(august) == 550
+  assert incomestatement.get_investments(september) == 300
+
+def test_get_savings_goals(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_savings_goals(july) == 100
+  assert incomestatement.get_savings_goals(august) == 100
+  assert incomestatement.get_savings_goals(september) == 0
+
