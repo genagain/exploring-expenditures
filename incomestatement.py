@@ -1,6 +1,8 @@
+from collections import OrderedDict
+
 import numpy as np
 import pandas as pd
-
+from config import OPTIMAL_BREAKDOWN
 
 def get_income(transactions):
     idx = transactions.category == 'paycheck'
@@ -19,6 +21,21 @@ def get_net_qapital_savings(transactions):
     deposits = transactions[deposits_idx].amount.sum()
     return np.round(withdrawals - deposits)
 
+def get_net_qapital_breakdown(transactions):
+    residual_savings = get_net_qapital_savings(transactions)
+
+    breakdown = OrderedDict([ (category, 0) for category in OPTIMAL_BREAKDOWN.keys() ])
+    for category, amount in OPTIMAL_BREAKDOWN.iteritems():
+        if residual_savings >= amount:
+            breakdown[category] = amount
+            residual_savings -= amount
+        else:
+            breakdown[category] = residual_savings
+            return breakdown
+
+    return breakdown
+
+# TODO change to investments
 def get_net_savings(transactions):
     qapital_savings = get_net_qapital_savings(transactions)
     vanguard_idx = transactions.original_description.str.contains('VANGUARD')
@@ -43,3 +60,28 @@ def get_utilities(transactions):
     idx = (transactions.account_name == 'Bills') & (transactions.original_description.str.contains('COMCAST|EVERSOURCE'))
     expenses = transactions[idx].amount.sum()
     return np.round(expenses, 2)
+
+def get_rent(transactions):
+    idx = transactions.original_description.str.contains('(?i)willow')
+    rent = transactions[idx].amount.sum()
+    return np.round(rent, 2)
+
+def get_phone_bill(transactions):
+    idx = transactions.original_description.str.contains('(?i)project fi')
+    phone_bill = transactions[idx].amount.sum()
+    return np.round(phone_bill, 2)
+
+def get_groceries(transactions):
+    idx = transactions.original_description.str.contains('(?i)instacart|star market')
+    groceries = transactions[idx].amount.sum()
+    return np.round(groceries, 2)
+
+def get_fixed_costs(transactions):
+    rent = get_rent(transactions)
+    utilities = get_utilities(transactions)
+    phone_bill = get_phone_bill(transactions)
+    groceries = get_groceries(transactions)
+    # TODO use qapital breakdown function
+    net_qapital_savings = get_net_qapital_savings(transactions)
+    fixed_savings = 540 if net_qapital_savings >= 540 else net_qapital_savings
+    return rent + utilities + phone_bill + groceries + fixed_savings
