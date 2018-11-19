@@ -16,7 +16,7 @@ def get_income(transactions, return_selected=False):
     return sum_amounts(transactions[idx], return_selected)
 
 def get_transportation_expenses(transactions, return_selected=False):
-    idx = transactions.original_description.str.contains('LYFT')
+    idx = transactions.original_description.str.contains('(?i)lyft')
     return sum_amounts(transactions[idx], return_selected)
 
 def get_utilities(transactions, return_selected=False):
@@ -87,3 +87,38 @@ def get_fixed_costs(transactions, return_selected=False):
 def get_savings_goals(transactions, return_selected=False):
     breakdown = get_net_qapital_breakdown(transactions)
     return breakdown['savings_goals']
+
+def get_discretionary_spending(transactions):
+    rent = get_rent(transactions, return_selected=True)
+    utilities = get_utilities(transactions, return_selected=True)
+    phone_bill = get_phone_bill(transactions, return_selected=True)
+    groceries = get_groceries(transactions, return_selected=True)
+    transportation = get_transportation_expenses(transactions, return_selected=True)
+
+    qapital_withdrawals, qapital_deposits = get_net_qapital_savings(transactions, return_selected=True)
+    venmo_deposits, venmo_withdrawals = get_net_venmo(transactions, return_selected=True)
+    vanguard_savings, business_investment = get_investments(transactions, return_selected=True)
+
+    idx = transactions.original_description.str.contains('(?i)transfer') & ~(transactions.original_description.str.contains('Online scheduled transfer from CHK 4604'))
+    transfers = transactions[idx]
+
+    # TODO include income
+    necessary_spending = pd.concat([
+      rent,
+      utilities,
+      phone_bill,
+      groceries,
+      transportation,
+      qapital_withdrawals,
+      qapital_deposits,
+      venmo_deposits,
+      venmo_withdrawals,
+      vanguard_savings,
+      business_investment,
+      transfers
+    ])
+
+    discretionary_transactions = transactions[~transactions.isin(necessary_spending)].dropna()
+    import pdb; pdb.set_trace()
+    # TODO drop transfers
+    return sum_amounts(discretionary_transactions, return_selected=False)

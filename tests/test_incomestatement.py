@@ -176,3 +176,11 @@ def test_get_savings_goals(test_transactions):
   assert incomestatement.get_savings_goals(august) == 100
   assert incomestatement.get_savings_goals(september) == 0
 
+def test_get_discretionary_spending(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_discretionary_spending(july) == 100
+  assert incomestatement.get_discretionary_spending(august) == 100
+  assert incomestatement.get_discretionary_spending(september) == 0
+
+  for month in test_transactions:
+    assert incomestatement.get_income(month) - (incomestatement.get_fixed_costs(month) + incomestatement.get_investment(month) + incomestatement.get_savings_goals(month)) == incomestatement.get_discretionary_spending(month)
