@@ -72,8 +72,22 @@ def get_phone_bill(transactions, return_selected=False):
     return sum_amounts(transactions[idx], return_selected)
 
 def get_groceries(transactions, return_selected=False):
-    idx = transactions.original_description.str.contains('(?i)instacart|star market')
+    idx = transactions.original_description.str.contains('(?i)instacart|star market|wegmans')
     return sum_amounts(transactions[idx], return_selected)
+
+def get_debitize_payments(transactions, return_selected=False):
+    idx = transactions.original_description.str.contains('(?i)debitize')
+    return sum_amounts(transactions[idx], return_selected)
+
+def get_nfcu_payments(transactions, return_selected=False):
+   # TODO rethink how this is computed while selecting all of the relevant records
+   idx = transactions.original_description.str.contains('(?i)nfcu ach des:payment|payment received')
+   return sum_amounts(transactions[idx], return_selected)
+
+def get_unnecessary_fees(transactions, return_selected=False):
+   # The space in the regex might be necessary to exclude the token 'coffee'
+   idx = transactions.original_description.str.contains('(?i) fee')
+   return sum_amounts(transactions[idx], return_selected)
 
 def get_fixed_costs(transactions, return_selected=False):
     rent = get_rent(transactions)
@@ -89,21 +103,22 @@ def get_savings_goals(transactions, return_selected=False):
     return breakdown['savings_goals']
 
 def get_discretionary_spending(transactions):
+    income = get_income(transactions, return_selected=True)
     rent = get_rent(transactions, return_selected=True)
     utilities = get_utilities(transactions, return_selected=True)
     phone_bill = get_phone_bill(transactions, return_selected=True)
     groceries = get_groceries(transactions, return_selected=True)
     transportation = get_transportation_expenses(transactions, return_selected=True)
+    debitize_payments = get_debitize_payments(transactions, return_selected=True)
+    nfcu_payments = get_nfcu_payments(transactions, return_selected=True)
+    unnecessary_fees = get_unnecessary_fees(transactions, return_selected=True)
 
     qapital_withdrawals, qapital_deposits = get_net_qapital_savings(transactions, return_selected=True)
     venmo_deposits, venmo_withdrawals = get_net_venmo(transactions, return_selected=True)
     vanguard_savings, business_investment = get_investments(transactions, return_selected=True)
 
-    idx = transactions.original_description.str.contains('(?i)transfer') & ~(transactions.original_description.str.contains('Online scheduled transfer from CHK 4604'))
-    transfers = transactions[idx]
-
-    # TODO include income
     necessary_spending = pd.concat([
+      income,
       rent,
       utilities,
       phone_bill,
@@ -115,10 +130,14 @@ def get_discretionary_spending(transactions):
       venmo_withdrawals,
       vanguard_savings,
       business_investment,
-      transfers
+      debitize_payments,
+      nfcu_payments,
+      unnecessary_fees
     ])
 
     discretionary_transactions = transactions[~transactions.isin(necessary_spending)].dropna()
-    import pdb; pdb.set_trace()
-    # TODO drop transfers
+
+    # Drop transfers here to no interfere with my investments logic
+    idx = ~(discretionary_transactions.original_description.str.contains('(?i)transfer'))
+    discretionary_transactions = discretionary_transactions[idx]
     return sum_amounts(discretionary_transactions, return_selected=False)

@@ -3,6 +3,10 @@ import pandas as pd
 import incomestatement
 from collections import OrderedDict
 
+# TODO ensure that all assertions have two decimal places unless it's zero
+# TODO only use october, november, december
+# TODO think about how to account for cashing out wayfair stocks
+
 @pytest.fixture
 def test_transactions():
   # TODO verify in B of A and Mint transactions for every single assertion
@@ -128,23 +132,61 @@ def test_get_phone_bill_return_selected(test_transactions):
 
 def test_get_groceries(test_transactions):
   july, august, september = test_transactions
-  assert incomestatement.get_groceries(july) == 173.98
+  assert incomestatement.get_groceries(july) == 271.04
   assert incomestatement.get_groceries(august) == 122.43
-  assert incomestatement.get_groceries(september) == 39.60
+  assert incomestatement.get_groceries(september) == 218.22
 
 def test_get_groceries_return_selected(test_transactions):
   for month in test_transactions:
     selected_records = incomestatement.get_groceries(month, return_selected=True)
     descriptions = selected_records.original_description
-    assert all(['INSTACART' in description or 'STAR MARKET' in description for description in descriptions])
+    # TODO figure out a better way of doing this
+    assert all(['INSTACART' in description or 'STAR MARKET' in description or 'WEGMANS' in description for description in descriptions])
+
+def test_get_debitize_payments(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_debitize_payments(july) == 200
+  assert incomestatement.get_debitize_payments(august) == 1359.88
+  assert incomestatement.get_debitize_payments(september) == 1248.08
+
+def test_get_debitize_payments_return_selected(test_transactions):
+  for month in test_transactions:
+    selected_records = incomestatement.get_debitize_payments(month, return_selected=True)
+    descriptions = selected_records.original_description
+    assert all(['debitize' in description.lower() for description in descriptions])
+
+
+def test_get_nfcu_payments(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_nfcu_payments(july) == 1395.65
+  assert incomestatement.get_nfcu_payments(august) == 775.23
+  assert incomestatement.get_nfcu_payments(september) == 986.01
+
+def test_get_nfcu_payments_return_selected(test_transactions):
+  for month in test_transactions:
+    selected_records = incomestatement.get_nfcu_payments(month, return_selected=True)
+    descriptions = selected_records.original_description
+    assert all(['PAYMENT' in description for description in descriptions])
+
+def test_get_unnecessary_fees(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_unnecessary_fees(july) == 101.5
+  assert incomestatement.get_unnecessary_fees(august) == 164.88
+  assert incomestatement.get_unnecessary_fees(september) == 90.03
+
+def test_get_unnecessary_fees_return_selected(test_transactions):
+  for month in test_transactions:
+    selected_records = incomestatement.get_unnecessary_fees(month, return_selected=True)
+    descriptions = selected_records.original_description
+    assert all(['fee' in description.lower() for description in descriptions])
 
 def test_fixed_costs(test_transactions):
   july, august, september = test_transactions
 
   expected_fixed_costs = [
-    {'transactions': july, 'expected_cost': 936.86},
+    {'transactions': july, 'expected_cost': 1033.92},
     {'transactions': august, 'expected_cost': 3403.49},
-    {'transactions': september, 'expected_cost': 2311.98},
+    {'transactions': september, 'expected_cost': 2490.6},
   ]
 
   for fixed_cost in expected_fixed_costs:
@@ -178,9 +220,10 @@ def test_get_savings_goals(test_transactions):
 
 def test_get_discretionary_spending(test_transactions):
   july, august, september = test_transactions
-  assert incomestatement.get_discretionary_spending(july) == 100
-  assert incomestatement.get_discretionary_spending(august) == 100
-  assert incomestatement.get_discretionary_spending(september) == 0
+  assert incomestatement.get_discretionary_spending(july) == 4178.94
+  assert incomestatement.get_discretionary_spending(august) == 23740.79
+  assert incomestatement.get_discretionary_spending(september) == 7936.0
 
   for month in test_transactions:
-    assert incomestatement.get_income(month) - (incomestatement.get_fixed_costs(month) + incomestatement.get_investment(month) + incomestatement.get_savings_goals(month)) == incomestatement.get_discretionary_spending(month)
+    # TODO ensure that I can get the selected records for each function invocation
+    assert incomestatement.get_income(month) - (incomestatement.get_fixed_costs(month) + incomestatement.get_investments(month) + incomestatement.get_savings_goals(month)) == incomestatement.get_discretionary_spending(month)
