@@ -90,19 +90,23 @@ def get_unnecessary_fees(transactions, return_selected=False):
    return sum_amounts(transactions[idx], return_selected)
 
 def get_fixed_costs(transactions, return_selected=False):
-    rent = get_rent(transactions)
-    utilities = get_utilities(transactions)
-    phone_bill = get_phone_bill(transactions)
-    groceries = get_groceries(transactions)
-    breakdown = get_net_qapital_breakdown(transactions)
+    rent = get_rent(transactions, return_selected)
+    utilities = get_utilities(transactions, return_selected)
+    phone_bill = get_phone_bill(transactions, return_selected)
+    groceries = get_groceries(transactions, return_selected)
+    breakdown = get_net_qapital_breakdown(transactions, return_selected)
 
-    return rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
+    if return_selected:
+      return pd.concat([rent, utilities, phone_bill, groceries])
+    else:
+      return rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
 
 def get_savings_goals(transactions, return_selected=False):
+    # TODO add HSBC stuff
     breakdown = get_net_qapital_breakdown(transactions)
     return breakdown['savings_goals']
 
-def get_discretionary_spending(transactions):
+def get_discretionary_spending(transactions, return_selected=False):
     income = get_income(transactions, return_selected=True)
     rent = get_rent(transactions, return_selected=True)
     utilities = get_utilities(transactions, return_selected=True)
@@ -138,6 +142,6 @@ def get_discretionary_spending(transactions):
     discretionary_transactions = transactions[~transactions.isin(necessary_spending)].dropna()
 
     # Drop transfers here to no interfere with my investments logic
-    idx = ~(discretionary_transactions.original_description.str.contains('(?i)transfer'))
+    idx = ~(discretionary_transactions.original_description.str.contains('(?i)transfer|wire type:intl in date|irs des:usataxpymt|return of posted check'))
     discretionary_transactions = discretionary_transactions[idx]
-    return sum_amounts(discretionary_transactions, return_selected=False)
+    return sum_amounts(discretionary_transactions, return_selected)

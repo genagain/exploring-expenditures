@@ -3,6 +3,7 @@ import pandas as pd
 import incomestatement
 from collections import OrderedDict
 
+# TODO refactor with a config file of tokens for each aggregation
 # TODO ensure that all assertions have two decimal places unless it's zero
 # TODO only use october, november, december
 # TODO think about how to account for cashing out wayfair stocks
@@ -199,6 +200,18 @@ def test_fixed_costs(test_transactions):
     assert incomestatement.get_fixed_costs(month) == rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
     assert incomestatement.get_fixed_costs(month) == fixed_cost['expected_cost']
 
+def test_fixed_costs_return_selected(test_transactions):
+  for month in test_transactions:
+    rent = incomestatement.get_rent(month, return_selected=True)
+    utilities = incomestatement.get_utilities(month, return_selected=True)
+    phone_bill = incomestatement.get_phone_bill(month, return_selected=True)
+    groceries = incomestatement.get_groceries(month, return_selected=True)
+
+    fixed_costs_records = incomestatement.get_fixed_costs(month, return_selected=True)
+
+    expected_fixed_cost_records = pd.concat([rent, utilities, phone_bill, groceries])
+    assert fixed_costs_records.equals(expected_fixed_cost_records)
+
 def test_get_investments(test_transactions):
   july, august, september = test_transactions
   assert incomestatement.get_investments(july) == 525
@@ -219,11 +232,33 @@ def test_get_savings_goals(test_transactions):
   assert incomestatement.get_savings_goals(september) == 0
 
 def test_get_discretionary_spending(test_transactions):
+  # TODO revisit these assertions after going over all of the transactions
   july, august, september = test_transactions
   assert incomestatement.get_discretionary_spending(july) == 4178.94
-  assert incomestatement.get_discretionary_spending(august) == 23740.79
+  assert incomestatement.get_discretionary_spending(august) == 5243.55
   assert incomestatement.get_discretionary_spending(september) == 7936.0
 
+def test_get_discretionary_spending_return_selected(test_transactions):
   for month in test_transactions:
-    # TODO ensure that I can get the selected records for each function invocation
-    assert incomestatement.get_income(month) - (incomestatement.get_fixed_costs(month) + incomestatement.get_investments(month) + incomestatement.get_savings_goals(month)) == incomestatement.get_discretionary_spending(month)
+    income = incomestatement.get_income(month, return_selected=True)
+    fixed_costs = incomestatement.get_fixed_costs(month, return_selected=True)
+    vanguard_savings, business_investment = incomestatement.get_investments(month, return_selected=True)
+    qapital_withdrawals, qapital_deposits = incomestatement.get_net_qapital_savings(month, return_selected=True)
+    venmo_deposits, venmo_withdrawals = incomestatement.get_net_venmo(month, return_selected=True)
+
+    discretionary_spending = incomestatement.get_discretionary_spending(month, return_selected=True)
+
+    expenses = [
+      income,
+      fixed_costs,
+      vanguard_savings,
+      business_investment,
+      qapital_withdrawals,
+      qapital_deposits,
+      venmo_deposits,
+      venmo_withdrawals
+    ]
+
+    for expense in expenses:
+      overlap = discretionary_spending.isin(expense).all(axis=None)
+      assert overlap == False
