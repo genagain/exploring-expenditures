@@ -84,6 +84,10 @@ def get_nfcu_payments(transactions, return_selected=False):
    idx = transactions.original_description.str.contains('(?i)nfcu ach des:payment|payment received')
    return sum_amounts(transactions[idx], return_selected)
 
+def get_nfcu_interest(transactions, return_selected=False):
+   idx = transactions.original_description.str.contains('(?i)interest charge-cash')
+   return sum_amounts(transactions[idx], return_selected)
+
 def get_unnecessary_fees(transactions, return_selected=False):
    # The space in the regex might be necessary to exclude the token 'coffee'
    idx = transactions.original_description.str.contains('(?i) fee')
@@ -118,7 +122,7 @@ def get_discretionary_spending(transactions, return_selected=False):
     unnecessary_fees = get_unnecessary_fees(transactions, return_selected=True)
 
     qapital_withdrawals, qapital_deposits = get_net_qapital_savings(transactions, return_selected=True)
-    venmo_deposits, venmo_withdrawals = get_net_venmo(transactions, return_selected=True)
+    venmo_deposits, _ = get_net_venmo(transactions, return_selected=True)
     vanguard_savings, business_investment = get_investments(transactions, return_selected=True)
 
     necessary_spending = pd.concat([
@@ -131,7 +135,6 @@ def get_discretionary_spending(transactions, return_selected=False):
       qapital_withdrawals,
       qapital_deposits,
       venmo_deposits,
-      venmo_withdrawals,
       vanguard_savings,
       business_investment,
       debitize_payments,

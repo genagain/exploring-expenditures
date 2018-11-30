@@ -156,7 +156,6 @@ def test_get_debitize_payments_return_selected(test_transactions):
     descriptions = selected_records.original_description
     assert all(['debitize' in description.lower() for description in descriptions])
 
-
 def test_get_nfcu_payments(test_transactions):
   july, august, september = test_transactions
   assert incomestatement.get_nfcu_payments(july) == 1395.65
@@ -168,6 +167,18 @@ def test_get_nfcu_payments_return_selected(test_transactions):
     selected_records = incomestatement.get_nfcu_payments(month, return_selected=True)
     descriptions = selected_records.original_description
     assert all(['PAYMENT' in description for description in descriptions])
+
+def test_get_nfcu_interest(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_nfcu_interest(july) == 0.23
+  assert incomestatement.get_nfcu_interest(august) == 0.04
+  assert incomestatement.get_nfcu_interest(september) == 0.0
+
+def test_get_nfcu_interest_return_selected(test_transactions):
+  for month in test_transactions:
+    selected_records = incomestatement.get_nfcu_interest(month, return_selected=True)
+    descriptions = selected_records.original_description
+    assert all(['INTEREST CHARGE' in description for description in descriptions])
 
 def test_get_unnecessary_fees(test_transactions):
   july, august, september = test_transactions
@@ -234,9 +245,9 @@ def test_get_savings_goals(test_transactions):
 def test_get_discretionary_spending(test_transactions):
   # TODO revisit these assertions after going over all of the transactions
   july, august, september = test_transactions
-  assert incomestatement.get_discretionary_spending(july) == 4178.94
-  assert incomestatement.get_discretionary_spending(august) == 5243.55
-  assert incomestatement.get_discretionary_spending(september) == 7936.0
+  assert incomestatement.get_discretionary_spending(july) == 4231.44
+  assert incomestatement.get_discretionary_spending(august) == 5383.55
+  assert incomestatement.get_discretionary_spending(september) == 7968.0
 
 def test_get_discretionary_spending_return_selected(test_transactions):
   for month in test_transactions:
@@ -255,8 +266,7 @@ def test_get_discretionary_spending_return_selected(test_transactions):
       business_investment,
       qapital_withdrawals,
       qapital_deposits,
-      venmo_deposits,
-      venmo_withdrawals
+      venmo_deposits
     ]
 
     for expense in expenses:
