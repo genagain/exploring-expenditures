@@ -1,7 +1,11 @@
+from datetime import datetime
+from freezegun import freeze_time
 import pytest
 import pandas as pd
 import incomestatement
 from collections import OrderedDict
+
+import utilities
 
 # TODO refactor with a config file of tokens for each aggregation
 # TODO ensure that all assertions have two decimal places unless it's zero
@@ -272,3 +276,54 @@ def test_get_discretionary_spending_return_selected(test_transactions):
     for expense in expenses:
       overlap = discretionary_spending.isin(expense).all(axis=None)
       assert overlap == False
+
+
+# TODO test Sunday
+# TODO test another day later than monday
+@freeze_time("Sept 23rd, 2018")
+def test_week_to_day_transactions(monkeypatch):
+    def mock_get_transactions():
+      transactions = pd.read_pickle('tests/transactions.pickle')
+      return transactions
+
+    monkeypatch.setattr(utilities,'get_transactions', mock_get_transactions)
+
+    expected_start_date = datetime(2018, 9, 16)
+    expected_end_date = datetime(2018, 9, 22)
+
+    weeks_transactions = incomestatement.week_to_day_transactions()
+
+    actual_start_date = weeks_transactions.date.min()
+    actual_end_date = weeks_transactions.date.max()
+
+    assert expected_start_date.year == actual_start_date.year
+    assert expected_start_date.month == actual_start_date.month
+    assert expected_start_date.day <= actual_start_date.day
+
+    assert expected_end_date.year == actual_end_date.year
+    assert expected_end_date.month == actual_end_date.month
+    assert expected_end_date.day >= actual_end_date.day
+
+@freeze_time("Sept 26rd, 2018")
+def test_week_to_day_transactions(monkeypatch):
+    def mock_get_transactions():
+      transactions = pd.read_pickle('tests/transactions.pickle')
+      return transactions
+
+    monkeypatch.setattr(utilities,'get_transactions', mock_get_transactions)
+
+    expected_start_date = datetime(2018, 9, 23)
+    expected_end_date = datetime(2018, 9, 25)
+
+    weeks_transactions = incomestatement.week_to_day_transactions()
+
+    actual_start_date = weeks_transactions.date.min()
+    actual_end_date = weeks_transactions.date.max()
+
+    assert expected_start_date.year == actual_start_date.year
+    assert expected_start_date.month == actual_start_date.month
+    assert expected_start_date.day <= actual_start_date.day
+
+    assert expected_end_date.year == actual_end_date.year
+    assert expected_end_date.month == actual_end_date.month
+    assert expected_end_date.day >= actual_end_date.day

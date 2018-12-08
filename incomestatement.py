@@ -1,8 +1,11 @@
 from collections import OrderedDict
-
+from datetime import datetime, timedelta
+import  mintapi
 import numpy as np
+import os
 import pandas as pd
 from config import OPTIMAL_BREAKDOWN
+import utilities
 
 def sum_amounts(transactions, return_selected=False):
     if return_selected:
@@ -148,3 +151,19 @@ def get_discretionary_spending(transactions, return_selected=False):
     idx = ~(discretionary_transactions.original_description.str.contains('(?i)transfer|wire type:intl in date|irs des:usataxpymt|return of posted check'))
     discretionary_transactions = discretionary_transactions[idx]
     return sum_amounts(discretionary_transactions, return_selected)
+
+def get_transactions():
+    mint = mintapi.Mint(os.environ['EMAIL'], os.environ['PASSWORD'])
+    mint.initiate_account_refresh()
+    transactions = mint.get_transactions()
+    transactions.drop_duplicates(['date','original_description','amount'], inplace=True)
+    return transactions
+
+def week_to_day_transactions():
+    today = datetime.now()
+    day_num = (today.weekday() + 1) % 7
+    sun = today - timedelta(day_num)
+    yesterday = today - timedelta(1)
+    transactions = utilities.get_transactions()
+    idx = (transactions.date >= sun) & (transactions.date <= yesterday)
+    return transactions[idx]
