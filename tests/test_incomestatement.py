@@ -249,9 +249,9 @@ def test_get_savings_goals(test_transactions):
 def test_get_discretionary_spending(test_transactions):
   # TODO revisit these assertions after going over all of the transactions
   july, august, september = test_transactions
-  assert incomestatement.get_discretionary_spending(july) == 4231.44
-  assert incomestatement.get_discretionary_spending(august) == 5383.55
-  assert incomestatement.get_discretionary_spending(september) == 7968.0
+  assert incomestatement.get_discretionary_spending(july) == 4743.44
+  assert incomestatement.get_discretionary_spending(august) == 6034.55
+  assert incomestatement.get_discretionary_spending(september) == 8526.0
 
 def test_get_discretionary_spending_return_selected(test_transactions):
   for month in test_transactions:

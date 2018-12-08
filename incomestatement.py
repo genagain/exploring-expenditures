@@ -134,7 +134,6 @@ def get_discretionary_spending(transactions, return_selected=False):
       utilities,
       phone_bill,
       groceries,
-      transportation,
       qapital_withdrawals,
       qapital_deposits,
       venmo_deposits,
