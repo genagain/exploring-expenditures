@@ -152,13 +152,6 @@ def get_discretionary_spending(transactions, return_selected=False):
     discretionary_transactions = discretionary_transactions[idx]
     return sum_amounts(discretionary_transactions, return_selected)
 
-def get_transactions():
-    mint = mintapi.Mint(os.environ['EMAIL'], os.environ['PASSWORD'])
-    mint.initiate_account_refresh()
-    transactions = mint.get_transactions()
-    transactions.drop_duplicates(['date','original_description','amount'], inplace=True)
-    return transactions
-
 def week_to_day_transactions():
     today = datetime.now()
     day_num = (today.weekday() + 1) % 7
