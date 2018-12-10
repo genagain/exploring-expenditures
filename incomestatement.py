@@ -79,12 +79,12 @@ def get_groceries(transactions, return_selected=False):
     return sum_amounts(transactions[idx], return_selected)
 
 def get_debitize_payments(transactions, return_selected=False):
-    idx = transactions.original_description.str.contains('(?i)debitize|mail remittance payment received')
+    idx = transactions.original_description.str.contains('(?i)debitize|mail remittance payment received|ach payment received')
     return sum_amounts(transactions[idx], return_selected)
 
 def get_nfcu_payments(transactions, return_selected=False):
    # TODO rethink how this is computed while selecting all of the relevant records
-    idx = transactions.original_description.str.contains('(?i)nfcu ach des:payment')
+    idx = transactions.original_description.str.contains('(?i)nfcu ach des:')
     return sum_amounts(transactions[idx], return_selected)
 
 def get_nfcu_interest(transactions, return_selected=False):
@@ -118,7 +118,7 @@ def get_fixed_costs(transactions, return_selected=False):
 
 def get_savings_goals(transactions, return_selected=False):
     breakdown = get_net_qapital_breakdown(transactions)
-    idx = transactions.original_description.str.contains('(?i)hsbc online')
+    idx = transactions.original_description.str.contains('(?i)hsbc online|hsbc bank')
     if return_selected:
         return sum_amounts(transactions[idx], return_selected)
     else:

@@ -15,6 +15,9 @@ transactions.loc[transactions.index.isin(list(idx)), 'Automatic Label'] = 'Overd
 idx = incomestatement.get_unnecessary_fees(transactions, return_selected=True).index
 transactions.loc[transactions.index.isin(list(idx)), 'Automatic Label'] = 'Fee'
 
+idx = incomestatement.get_nfcu_payments(transactions, return_selected=True).index
+transactions.loc[transactions.index.isin(list(idx)), 'Automatic Label'] = 'Credit Card Payment'
+
 idx = incomestatement.get_savings_goals(transactions, return_selected=True).index
 transactions.loc[transactions.index.isin(list(idx)), 'Automatic Label'] = 'Savings Goal'
 
