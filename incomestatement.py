@@ -15,7 +15,7 @@ def sum_amounts(transactions, return_selected=False):
       return np.round(total_amount, 2)
 
 def get_income(transactions, return_selected=False):
-    idx = transactions.category == 'paycheck'
+    idx = transactions.original_description.str.contains('(?i)wayfair|gusto')
     return sum_amounts(transactions[idx], return_selected)
 
 def get_transportation_expenses(transactions, return_selected=False):
@@ -75,26 +75,34 @@ def get_phone_bill(transactions, return_selected=False):
     return sum_amounts(transactions[idx], return_selected)
 
 def get_groceries(transactions, return_selected=False):
-    idx = transactions.original_description.str.contains('(?i)instacart|star market|wegmans')
+    idx = transactions.original_description.str.contains('(?i)instacart|star market|wegmans|wholefds')
     return sum_amounts(transactions[idx], return_selected)
 
 def get_debitize_payments(transactions, return_selected=False):
-    idx = transactions.original_description.str.contains('(?i)debitize')
+    idx = transactions.original_description.str.contains('(?i)debitize|mail remittance payment received')
     return sum_amounts(transactions[idx], return_selected)
 
 def get_nfcu_payments(transactions, return_selected=False):
    # TODO rethink how this is computed while selecting all of the relevant records
-   idx = transactions.original_description.str.contains('(?i)nfcu ach des:payment|payment received')
-   return sum_amounts(transactions[idx], return_selected)
+    idx = transactions.original_description.str.contains('(?i)nfcu ach des:payment')
+    return sum_amounts(transactions[idx], return_selected)
 
 def get_nfcu_interest(transactions, return_selected=False):
-   idx = transactions.original_description.str.contains('(?i)interest charge-cash')
-   return sum_amounts(transactions[idx], return_selected)
+    idx = transactions.original_description.str.contains('(?i)interest charge-cash')
+    return sum_amounts(transactions[idx], return_selected)
 
 def get_unnecessary_fees(transactions, return_selected=False):
    # The space in the regex might be necessary to exclude the token 'coffee'
-   idx = transactions.original_description.str.contains('(?i) fee')
-   return sum_amounts(transactions[idx], return_selected)
+    idx = transactions.original_description.str.contains('(?i) fee')
+    return sum_amounts(transactions[idx], return_selected)
+
+def get_overdraft_no_fees(transactions, return_selected=False):
+    idx = transactions.original_description.str.contains('(?i)overdraft protection (to|from)')
+    return sum_amounts(transactions[idx], return_selected)
+
+def get_transfers(transactions, return_selected=False):
+    idx = transactions.original_description.str.contains('(?i)transfer|wire type:intl in date|irs des:usataxpymt|return of posted check')
+    return sum_amounts(transactions[idx], return_selected)
 
 def get_fixed_costs(transactions, return_selected=False):
     rent = get_rent(transactions, return_selected)
@@ -109,9 +117,12 @@ def get_fixed_costs(transactions, return_selected=False):
       return rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
 
 def get_savings_goals(transactions, return_selected=False):
-    # TODO add HSBC stuff
     breakdown = get_net_qapital_breakdown(transactions)
-    return breakdown['savings_goals']
+    idx = transactions.original_description.str.contains('(?i)hsbc online')
+    if return_selected:
+        return sum_amounts(transactions[idx], return_selected)
+    else:
+        return sum_amounts(transactions[idx], return_selected) + breakdown['savings_goals']
 
 def get_discretionary_spending(transactions, return_selected=False):
     income = get_income(transactions, return_selected=True)
@@ -122,11 +133,13 @@ def get_discretionary_spending(transactions, return_selected=False):
     transportation = get_transportation_expenses(transactions, return_selected=True)
     debitize_payments = get_debitize_payments(transactions, return_selected=True)
     nfcu_payments = get_nfcu_payments(transactions, return_selected=True)
+    overdraft = get_overdraft_no_fees(transactions, return_selected=True)
     unnecessary_fees = get_unnecessary_fees(transactions, return_selected=True)
 
     qapital_withdrawals, qapital_deposits = get_net_qapital_savings(transactions, return_selected=True)
     venmo_deposits, _ = get_net_venmo(transactions, return_selected=True)
     vanguard_savings, business_investment = get_investments(transactions, return_selected=True)
+    savings_goals = get_savings_goals(transactions, return_selected=True)
 
     necessary_spending = pd.concat([
       income,
@@ -138,10 +151,12 @@ def get_discretionary_spending(transactions, return_selected=False):
       qapital_deposits,
       venmo_deposits,
       vanguard_savings,
+      savings_goals,
       business_investment,
       debitize_payments,
       nfcu_payments,
-      unnecessary_fees
+      unnecessary_fees,
+      overdraft
     ])
 
     discretionary_transactions = transactions[~transactions.isin(necessary_spending)].dropna()

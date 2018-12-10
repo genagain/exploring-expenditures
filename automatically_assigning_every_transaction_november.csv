@@ -1,0 +1,273 @@
+,Unnamed: 0,date,description,original_description,amount,transaction_type,category,account_name,Manual Label,Automatic Label
+0,0,2018-11-30,Transfer to Weekly Expenses,HSBC ONLINE DES:TRANSFER ID:XXXXX65723 INDN:GEN OHTA CO ID:XXXXX27921 WEB,100.0,debit,transfer,Deposits,Savings Goal,Savings Goal
+1,1,2018-11-30,Wayfair Llc Des,"WAYFAIR LLC DES:DIRECT DEP ID:XXXXX6206518HV5 INDN:OHTA,GEN D CO...",1177.45,credit,paycheck,Deposits,Income,Income
+2,2,2018-11-30,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 6558311260,155.88,debit,transfer,Deposits,Transfer,Transfer
+3,3,2018-11-30,Transfer to Business Fundamentals Chk,Online scheduled transfer to CHK 7727 Confirmation# 1314479913,50.0,debit,transfer,Deposits,Transfer,Transfer
+4,4,2018-11-30,Transfer from Bills,OVERDRAFT PROTECTION FROM 00004643091524,112.0,credit,transfer,Deposits,Overdraft,Overdraft
+5,5,2018-11-30,Transfer to Bills,Online scheduled transfer to CHK 1524 Confirmation# 1314479912,1250.0,debit,transfer,Deposits,Transfer,Transfer
+6,6,2018-11-30,Transfer to Bills,Online scheduled transfer to CHK 1524 Confirmation# 1314479914,100.0,debit,transfer,Deposits,Transfer,Transfer
+7,7,2018-11-30,Gusto Des Pay,GUSTO DES:PAY 780252 ID:6semjna12kc INDN:Gen Ohta CO ID:XXXXX64001 PPD,1578.43,credit,income,Deposits,Income,Income
+8,8,2018-11-30,Overdraft Fee,Overdraft Protection Transfer Fee,12.0,debit,bank fee,Deposits,Fee,Fee
+9,9,2018-11-30,Transfer from Deposits,Online scheduled transfer from CHK 4604 Confirmation# 1314479912,1250.0,credit,transfer,Bills,Transfer,Transfer
+10,10,2018-11-30,Transfer to Deposits,OVERDRAFT PROTECTION TO 00483039984604,112.0,debit,transfer,Bills,Overdraft,Overdraft
+11,11,2018-11-30,Transfer from Deposits,Online scheduled transfer from CHK 4604 Confirmation# 1314479914,100.0,credit,transfer,Bills,Transfer,Transfer
+12,12,2018-11-30,CVS,CVS/PHARM 0071 11/30 PURCHASE CAMBRIDGE MA,3.99,debit,pharmacy,Weekly Expenses,Spending Money,Spending Money
+13,13,2018-11-30,ATM Withdrawal,BKOFAMERICA ATM 11/30 #000002499 WITHDRWL PORTER SQUARE CAMBRIDGE MA,40.0,debit,cash & atm,Weekly Expenses,Spending Money,Spending Money
+14,14,2018-11-30,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 6558311260,155.88,credit,transfer,Weekly Expenses,Transfer,Transfer
+15,15,2018-11-30,Transfer from Deposits,Online scheduled transfer from CHK 4604 Confirmation# 1314479913,50.0,credit,transfer,Business Fundamentals Chk,Investment,Investment
+16,16,2018-11-30,Clover Food Lab,SQ *CLOVER FOOD LAB Cambridge MA,16.85,debit,restaurants,nRewards Visa,Spending Money,Spending Money
+17,17,2018-11-30,Clover Food Lab Dtx,SQ *CLOVER FOOD LAB Boston MA,9.01,debit,groceries,nRewards Visa,Spending Money,Spending Money
+18,18,2018-11-30,Prime Video M,Prime Video*M07LA00H2 888-802-3080 WA,14.99,debit,movies & dvds,nRewards Visa,Spending Money,Spending Money
+19,19,2018-11-30,George Howell Coffee,TST* GEORGE HOWELL COFFEE BOSTON MA,4.01,debit,business services,nRewards Visa,Spending Money,Spending Money
+20,20,2018-11-30,Falafel King Summer,FALAFEL KING - SUMMER BOSTON MA,10.7,debit,fast food,nRewards Visa,Spending Money,Spending Money
+21,21,2018-11-30,Secretentourage.com Www Secretent,SECRETENTOURAGE.COM WWW.SECRETENT FL,19.0,debit,,nRewards Visa,Spending Money,
+22,22,2018-11-29,Bagelsaurus,TST* BAGELSAURUS CAMBRIDGE MA,7.49,debit,restaurants,nRewards Visa,Spending Money,Spending Money
+23,23,2018-11-28,Clover Food Lab Dtx,SQ *CLOVER FOOD LAB Boston MA,13.44,debit,groceries,nRewards Visa,Spending Money,Spending Money
+24,24,2018-11-28,Postmates Tip Httpspostmate,POSTMATES TIP HTTPSPOSTMATE CA,4.49,debit,restaurants,nRewards Visa,Spending Money,Spending Money
+25,25,2018-11-28,Mbta Porter Sq,MBTA PORTER SQ CAMBRIDGE MA,5.5,debit,public transportation,nRewards Visa,Spending Money,Spending Money
+26,26,2018-11-28,Postmates E Shake,POSTMATES 11E15 SHAKE HTTPSPOSTMATE CA,19.13,debit,fast food,nRewards Visa,Spending Money,Spending Money
+27,27,2018-11-27,Star Market,STAR MARKET #0163 CAMBRIDGE MA,8.49,debit,groceries,nRewards Visa,Fixed Cost,Fixed Cost
+28,28,2018-11-27,Vanguard,VANGUARD BUY DES:INVESTMENT ID:XXXXX9410150718 INDN:GEN D OHTA CO ID:VMC PUR PPD,50.0,debit,financial,Deposits,Investment,Investment
+29,29,2018-11-27,Venmo,VENMO DES:PAYMENT ID:XXXXX18182 INDN:GEN OHTA CO ID:XXXXX81992 WEB,100.0,debit,transfer,Deposits,Spending Money,Spending Money
+30,30,2018-11-27,Transfer from Bills,OVERDRAFT PROTECTION FROM 00004643091524,137.1,credit,transfer,Deposits,Overdraft,Overdraft
+31,31,2018-11-27,Overdraft Fee,Overdraft Protection Transfer Fee,12.0,debit,bank fee,Deposits,Fee,Fee
+32,32,2018-11-27,Transfer to Deposits,OVERDRAFT PROTECTION TO 00483039984604,137.1,debit,transfer,Bills,Overdraft,Overdraft
+33,33,2018-11-26,Namecheap,NAME-CHEAP.COM WWW.NAMECHEAP AZ,9.06,debit,business services,nRewards Visa,Spending Money,Spending Money
+34,34,2018-11-26,Mail Remittance Received,MAIL REMITTANCE PAYMENT RECEIVED,278.24,credit,credit card payment,nRewards Visa,Debitize,Debitize
+35,35,2018-11-26,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 6508663503,50.0,debit,transfer,Deposits,Transfer,Transfer
+36,36,2018-11-26,Debitize,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,150.68,debit,credit card payment,Deposits,Debitize,Debitize
+37,37,2018-11-26,Debitize,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,25.0,debit,credit card payment,Deposits,Debitize,Debitize
+38,38,2018-11-26,Star Market,STAR MARKET 11/25 PURCHASE CAMBRIDGE MA,21.99,debit,groceries,Weekly Expenses,Fixed Cost,Fixed Cost
+39,39,2018-11-26,USPS,USPS PO 240101 11/24 PURCHASE CAMBRIDGE MA,32.25,debit,shipping,Weekly Expenses,Spending Money,Spending Money
+40,40,2018-11-26,Instacart Httpsinstacar Ca,INSTACART 11/24 PURCHASE HTTPSINSTACAR CA,35.0,debit,groceries,Weekly Expenses,Fixed Cost,Fixed Cost
+41,41,2018-11-26,Lyft,LYFT *RIDE FRI 4AM 11/23 PURCHASE LYFT.COM CA,40.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+42,42,2018-11-26,Instacart Httpsinstacar Ca,INSTACART 11/25 PURCHASE HTTPSINSTACAR CA,3.12,debit,groceries,Weekly Expenses,Fixed Cost,Fixed Cost
+43,43,2018-11-26,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 6508663503,50.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+44,44,2018-11-26,Lyft,LYFT *RIDE TUE 8AM 11/22 PURCHASE LYFT.COM CA,32.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+45,45,2018-11-26,Account Maintenance Fee,Monthly Maintenance Fee,12.0,debit,bank fee,Weekly Expenses,Fee,Fee
+46,46,2018-11-26,United Tx,UNITED 01626033024 11/22 PURCHASE 800-932-2732 TX,30.0,debit,air travel,Weekly Expenses,Spending Money,Spending Money
+47,47,2018-11-23,United,UNITED 0162603136486 HOUSTON TX,30.0,debit,air travel,nRewards Visa,Spending Money,Spending Money
+48,48,2018-11-23,Hsbc Online,HSBC ONLINE DES:TRANSFER ID:XXXXX21447 INDN:GEN OHTA CO ID:XXXXX27921 WEB,100.0,debit,transfer for cash spending,Deposits,Savings Goal,Savings Goal
+49,49,2018-11-23,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 5495101514,126.0,debit,transfer,Deposits,Transfer,Transfer
+50,50,2018-11-23,Transfer to Weekly Expenses,Online scheduled transfer to CHK 7727 Confirmation# 1312212810,50.0,debit,transfer,Deposits,Transfer,Transfer
+51,51,2018-11-23,Transfer from Weekly Expenses,QAPITAL DES:TRANSFER ID:XXXXX5365 INDN:GEN OHTA CO ID:XXXXX00003 PPD,25.0,credit,transfer,Deposits,Qapital,Qapital
+52,52,2018-11-23,Nfcu Ach Des,NFCU ACH DES:P2P ID:GEN D OHTA INDN:GEN OHTA CO ID:XXXXX00021 WEB,492.0,credit,income,Deposits,Creditcard Payment,Spending Money
+53,53,2018-11-23,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 5495101514,126.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+54,54,2018-11-23,Transfer from Deposits,Online scheduled transfer from CHK 4604 Confirmation# 1312212810,50.0,credit,transfer,Business Fundamentals Chk,Investment,Investment
+55,55,2018-11-21,Transfer from Bills,Online Banking transfer from CHK 1524 Confirmation# 3482367885,40.0,credit,transfer,Deposits,Transfer,Transfer
+56,56,2018-11-21,Qapital,QAPITAL DES:TRANSFER ID:XXXXX7854 INDN:GEN OHTA CO ID:XXXXX00003 PPD,100.0,debit,deposit,Deposits,Qapital,Qapital
+57,57,2018-11-21,Transfer to Deposits,Online Banking transfer to CHK 4604 Confirmation# 3482367885,40.0,debit,transfer,Bills,Transfer,Transfer
+58,58,2018-11-21,Lyft,LYFT *RIDE MON 11AM 11/19 PURCHASE LYFT.COM CA,19.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+59,59,2018-11-21,Transfer to Deposits,LYFT *RIDE MON 8PM 11/20 PURCHASE LYFT.COM CA,25.0,debit,transfer,Weekly Expenses,Spending Money,Spending Money
+60,60,2018-11-21,Tasty Burger Back,TASTY BURGER BACK BAY 11/19 PURCHASE BOSTON MA,6.69,debit,fast food,Weekly Expenses,Spending Money,Spending Money
+61,61,2018-11-21,Spotify,Spotify USA 646-8375380 NY,9.99,debit,music,nRewards Visa,Spending Money,Spending Money
+62,62,2018-11-21,Peet's Coffee,PEETS COFFEE & TEA BOSTON MA,15.79,debit,coffee shops,nRewards Visa,Spending Money,Spending Money
+63,63,2018-11-21,Mbta Back Bay,MBTA BACK BAY BOSTON MA,6.25,debit,public transportation,nRewards Visa,Spending Money,Spending Money
+64,64,2018-11-21,Gen Ohta Ach,ACH Transaction - Gen Ohta ACH 9999999999,492.0,debit,life insurance,EveryDay Checking,,
+65,65,2018-11-21,Transfer Shares,Transfer from Shares,493.0,credit,transfer,EveryDay Checking,Transfer,Transfer
+66,66,2018-11-20,Lyft,LYFT *RIDE SAT 11PM 11/19 PURCHASE LYFT.COM CA,52.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+67,67,2018-11-20,By Chloe Back,BY CHLOE BACK BAY 11/19 PURCHASE BOSTON MA,9.58,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+68,68,2018-11-20,Postmates Tatte Bakery,POSTMATES TATTE BAKERY HTTPSPOSTMATE CA,29.95,debit,restaurants,nRewards Visa,Spending Money,Spending Money
+69,69,2018-11-20,Project Fi G,GOOGLE *PROJECT FI g.co/helppay# CA,88.7,debit,mobile phone,nRewards Visa,Fixed Cost,Fixed Cost
+70,70,2018-11-19,Transfer to Business Fundamentals Chk,VANGUARD BUY DES:INVESTMENT ID:XXXXX9410150718 INDN:GEN D OHTA CO ID:VMC PUR PPD,50.0,debit,transfer,Deposits,Investment,Investment
+71,71,2018-11-19,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 2464399806,40.0,debit,transfer,Deposits,Transfer,Transfer
+72,72,2018-11-19,Venmo,VENMO DES:PAYMENT ID:XXXXX75291 INDN:GEN OHTA CO ID:XXXXX81992 WEB,12.92,debit,transfer,Deposits,Spending Money,Spending Money
+73,73,2018-11-19,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 2167667890,60.0,debit,transfer,Deposits,Transfer,Transfer
+74,74,2018-11-19,Debitize,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,15.95,debit,credit card payment,Deposits,Debitize,Debitize
+75,75,2018-11-19,Comcast,COMCAST DES:CABLE ID:6574084 INDN:GEN *OHTA CO ID:XXXXX13249 WEB,97.48,debit,television,Bills,Fixed Cost,Fixed Cost
+76,76,2018-11-19,Cambridge Naturals,CAMBRIDGE NATU 11/18 PURCHASE CAMBRIDGE MA,6.18,debit,groceries,Weekly Expenses,Spending Money,Spending Money
+77,77,2018-11-19,Bagelsaurus,TST* BAGELSAURUS 11/17 PURCHASE CAMBRIDGE MA,17.12,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+78,78,2018-11-19,Lyft,LYFT *RIDE THU 7AM 11/16 PURCHASE LYFT.COM CA,28.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+79,79,2018-11-19,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 2167667890,60.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+80,80,2018-11-19,United Tx,UNITED 01672253131 11/16 PURCHASE 800-932-2732 TX,492.4,debit,air travel,Weekly Expenses,Spending Money,Spending Money
+81,81,2018-11-19,Market Work,MARKET@WORK 2067379149 11/16 PURCHASE RENTON WA,3.5,debit,groceries,Weekly Expenses,Spending Money,Spending Money
+82,82,2018-11-19,ATM Withdrawal,BKOFAMERICA ATM 11/17 #000001219 WITHDRWL PORTER SQUARE CAMBRIDGE MA,120.0,debit,cash & atm,Weekly Expenses,Spending Money,Spending Money
+83,83,2018-11-19,Honeycomb Cream,SQ *HONEYCOMB CREAM 11/18 PURCHASE CAMBRIDGE MA,6.15,debit,fast food,Weekly Expenses,Spending Money,Spending Money
+84,84,2018-11-19,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 2464399806,40.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+85,85,2018-11-19,Lyft,LYFT *RIDE SAT 5PM 11/17 PURCHASE LYFT.COM CA,53.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+86,86,2018-11-19,Fee Refund Zk,Fee Refund zk9quc9,105.0,credit,fees & charges,Business Fundamentals Chk,,
+87,87,2018-11-19,Account Maintenance Fee,MONTHLY SERVICE CHARGE REFUND FDES NMO 0006576 231229,16.0,credit,bank fee,Business Fundamentals Chk,,
+88,88,2018-11-19,Mail Remittance Received,MAIL REMITTANCE PAYMENT RECEIVED,170.31,credit,credit card payment,nRewards Visa,Debitize,Debitize
+89,89,2018-11-19,Float Boston,FLOAT BOSTON SOMERVILLE MA,75.0,debit,spa & massage,nRewards Visa,Spending Money,Spending Money
+90,90,2018-11-19,Postmates Tip Httpspostmate,POSTMATES TIP HTTPSPOSTMATE CA,4.55,debit,restaurants,nRewards Visa,Spending Money,Spending Money
+91,91,2018-11-16,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 7341686370,700.0,debit,transfer,Deposits,Transfer,Transfer
+92,92,2018-11-16,Online Scheduled Transfer,Online scheduled transfer to CHK 1524 Confirmation# 1310851962,100.0,debit,transfer,Deposits,Transfer,Transfer
+93,93,2018-11-16,Debitize,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,71.35,debit,credit card payment,Deposits,Debitize,Debitize
+94,94,2018-11-16,Wayfair Llc Des,"WAYFAIR LLC DES:DIRECT DEP ID:XXXXX8361858HV5 INDN:OHTA,GEN D CO...",2422.31,credit,paycheck,Deposits,Income,Income
+95,95,2018-11-16,Transfer to Weekly Expenses,Online scheduled transfer to CHK 7727 Confirmation# 1310851961,50.0,debit,transfer,Deposits,Transfer,Transfer
+96,96,2018-11-16,Transfer to Business Fundamentals Chk,Online Banking transfer to CHK 0197 Confirmation# 5340976748,50.0,debit,transfer,Deposits,Transfer,Transfer
+97,97,2018-11-16,Transfer to Bills,Online scheduled transfer to CHK 1524 Confirmation# 1310851960,1250.0,debit,transfer,Deposits,Transfer,Transfer
+98,98,2018-11-16,Eversource,EVERSOURCE DES:WEB_PAY ID:XXXXX480102618 INDN:GEN OHTA CO ID:XXXXX42013 WEB,9.51,debit,utilities,Bills,Fixed Cost,Fixed Cost
+99,99,2018-11-16,Transfer from Deposits,Online scheduled transfer from CHK 4604 Confirmation# 1310851962,100.0,credit,transfer,Bills,Transfer,Transfer
+100,100,2018-11-16,Eversource,EVERSOURCE DES:WEB_PAY ID:XXXXX481102618 INDN:GEN OHTA CO ID:XXXXX42013 WEB,42.96,debit,utilities,Bills,Fixed Cost,Fixed Cost
+101,101,2018-11-16,Transfer from Deposits,Online scheduled transfer from CHK 4604 Confirmation# 1310851960,1250.0,credit,transfer,Bills,Transfer,Transfer
+102,102,2018-11-16,Whole Foods,WHOLEFDS SYM 1 11/16 PURCHASE BOSTON MA,17.25,debit,groceries,Weekly Expenses,Fixed Cost,Fixed Cost
+103,103,2018-11-16,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 5340976748,50.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+104,104,2018-11-16,Wine & Spirits,DOWNTOWN WINE AND SPIRI 11/15 PURCHASE SOMERVILLE MA,53.98,debit,alcohol & bars,Weekly Expenses,Spending Money,Spending Money
+105,105,2018-11-16,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 7341686370,700.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+106,106,2018-11-16,Transfer from Deposits,Online scheduled transfer from CHK 4604 Confirmation# 1310851961,50.0,credit,transfer,Business Fundamentals Chk,Investment,Investment
+107,107,2018-11-15,Qapital,QAPITAL DES:TRANSFER ID:XXXXX4471 INDN:GEN OHTA CO ID:XXXXX00003 PPD,182.0,debit,deposit,Deposits,Qapital,Qapital
+108,108,2018-11-15,Debitize,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,153.65,debit,credit card payment,Deposits,Debitize,Debitize
+109,109,2018-11-15,Hsbc Online,HSBC ONLINE DES:TRANSFER ID:XXXXX09087 INDN:GEN OHTA CO ID:XXXXX27921 WEB,100.0,debit,transfer for cash spending,Deposits,Savings Goal,Savings Goal
+110,110,2018-11-15,Venmo Des Cashout,VENMO DES:CASHOUT ID:XXXXX24311 INDN:GEN OHTA CO ID:XXXXX81992 PPD,19.0,credit,restaurants,Deposits,Venmo Deposit,Venmo Deposit
+111,111,2018-11-15,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 3133054436,70.0,debit,transfer,Deposits,Transfer,Transfer
+112,112,2018-11-15,Online Banking Transfer,Online Banking transfer to CHK 0197 Confirmation# 3132855263,25.0,debit,transfer,Deposits,Transfer,Transfer
+113,113,2018-11-15,Transfer to Weekly Expenses,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,25.0,debit,transfer,Deposits,Debitize,Debitize
+114,114,2018-11-15,Qapital,QAPITAL DES:TRANSFER ID:XXXXX9787 INDN:GEN OHTA CO ID:XXXXX00003 PPD,19.0,debit,deposit,Deposits,Qapital,Qapital
+115,115,2018-11-15,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 3132855263,25.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+116,116,2018-11-15,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 3133054436,70.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+117,117,2018-11-15,ATM Withdrawal,BKOFAMERICA ATM 11/15 #000001351 WITHDRWL PORTER SQUARE CAMBRIDGE MA,40.0,debit,cash & atm,Weekly Expenses,Spending Money,Spending Money
+118,118,2018-11-14,Num Pang Sandwich,NUM PANG SANDWICH SHOP - BOSTON MA,15.95,debit,restaurants,nRewards Visa,Spending Money,Spending Money
+119,119,2018-11-14,Debitize,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,2.57,debit,credit card payment,Deposits,Debitize,Debitize
+120,120,2018-11-14,Transfer to Bills,QAPITAL DES:TRANSFER ID:XXXXX4906 INDN:GEN OHTA CO ID:XXXXX00003 PPD,100.0,debit,transfer,Deposits,Qapital,Qapital
+121,121,2018-11-14,Venmo Des Cashout,VENMO DES:CASHOUT ID:XXXXX94409 INDN:GEN OHTA CO ID:XXXXX81992 PPD,75.7,credit,restaurants,Deposits,Venmo Deposit,Venmo Deposit
+122,122,2018-11-14,Gusto Des Ebv,GUSTO DES:EBV 705321 ID:6semjn913ue INDN:Gen Ohta CO ID:XXXXX64003 PPD,0.01,credit,income,Deposits,Income,Income
+123,123,2018-11-14,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 5416816010,25.0,debit,transfer,Bills,Transfer,Transfer
+124,124,2018-11-14,Au Bon Pain,COPLEY PLC AUBONPAIN 2 11/12 PURCHASE BOSTON MA,5.02,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+125,125,2018-11-14,Transfer from Bills,Online Banking transfer from CHK 1524 Confirmation# 5416816010,25.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+126,126,2018-11-14,Lyft,LYFT *RIDE MON 8AM 11/13 PURCHASE LYFT.COM CA,17.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+127,127,2018-11-13,Postmates Tatte Bakery,POSTMATES TATTE BAKERY HTTPSPOSTMATE CA,30.35,debit,restaurants,nRewards Visa,Spending Money,Spending Money
+128,128,2018-11-13,Pticthotelstours Ca,PTICTHOTELSTOURS 855-733-5872 CA,41.0,debit,hotel,nRewards Visa,Spending Money,Spending Money
+129,129,2018-11-13,Mail Remittance Received,MAIL REMITTANCE PAYMENT RECEIVED,22.11,credit,credit card payment,nRewards Visa,Debitize,Debitize
+130,130,2018-11-13,Online Banking Transfer,Online Banking transfer to CHK 0197 Confirmation# 6295811764,100.0,debit,transfer,Deposits,Transfer,Transfer
+131,131,2018-11-13,Debitize,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,25.67,debit,credit card payment,Deposits,Debitize,Debitize
+132,132,2018-11-13,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 5414645315,10.0,debit,transfer,Deposits,Transfer,Transfer
+133,133,2018-11-13,Venmo,VENMO DES:PAYMENT ID:XXXXX29008 INDN:GEN OHTA CO ID:XXXXX81992 WEB,35.0,debit,transfer,Deposits,Spending Money,Spending Money
+134,134,2018-11-13,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 6587417657,1020.0,debit,transfer,Deposits,Transfer,Transfer
+135,135,2018-11-13,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 7387864820,75.0,debit,transfer,Deposits,Transfer,Transfer
+136,136,2018-11-13,Nfcu Ach,NFCU ACH DES:PAYMENT ID:XXXXX2177000002 INDN:GEN OHTA CO ID:XXXXX00027 WEB,150.0,debit,credit card payment,Deposits,Credit card payment,
+137,137,2018-11-13,Transfer to Weekly Expenses,VENMO DES:PAYMENT ID:XXXXX48274 INDN:GEN OHTA CO ID:XXXXX81992 WEB,100.0,debit,transfer,Deposits,Spending Money,Spending Money
+138,138,2018-11-13,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 5414640727,25.32,debit,transfer,Deposits,Transfer,Transfer
+139,139,2018-11-13,Transfer to Weekly Expenses,VANGUARD BUY DES:INVESTMENT ID:XXXXX9410150718 INDN:GEN D OHTA CO ID:VMC PUR PPD,25.0,debit,transfer,Deposits,Investment,Investment
+140,140,2018-11-13,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 7290271629,60.0,debit,transfer,Deposits,Transfer,Transfer
+141,141,2018-11-13,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 6303435101,40.0,debit,transfer,Deposits,Transfer,Transfer
+142,142,2018-11-13,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 6295811764,100.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+143,143,2018-11-13,ATM Withdrawal,BKOFAMERICA ATM 11/11 #000009599 WITHDRWL PORTER SQUARE CAMBRIDGE MA,20.0,debit,cash & atm,Weekly Expenses,Spending Money,Spending Money
+144,144,2018-11-13,Star Market,STAR MARKET 11/12 PURCHASE CAMBRIDGE MA,8.27,debit,groceries,Weekly Expenses,Fixed Cost,Fixed Cost
+145,145,2018-11-13,Instacart Httpsinstacar Ca,INSTACART 11/11 PURCHASE HTTPSINSTACAR CA,60.3,debit,groceries,Weekly Expenses,Fixed Cost,Fixed Cost
+146,146,2018-11-13,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 5414645315,10.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+147,147,2018-11-13,Namecheap,NAME-CHEAP.COM 11/11 PURCHASE WWW.NAMECHEAP AZ,13.16,debit,business services,Weekly Expenses,Spending Money,Spending Money
+148,148,2018-11-13,Cambridge Naturals,CAMBRIDGE NATU 11/13 PURCHASE CAMBRIDGE MA,7.47,debit,groceries,Weekly Expenses,Spending Money,Spending Money
+149,149,2018-11-13,Lyft,LYFT *RIDE SAT 5PM 11/11 PURCHASE LYFT.COM CA,15.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+150,150,2018-11-13,Lyft,LYFT *RIDE SAT 8AM 11/10 PURCHASE LYFT.COM CA,8.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+151,151,2018-11-13,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 6303435101,40.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+152,152,2018-11-13,Namecheap,NAME-CHEAP.COM 11/10 PURCHASE WWW.NAMECHEAP AZ,5.0,debit,business services,Weekly Expenses,Spending Money,Spending Money
+153,153,2018-11-13,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 6587417657,1020.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+154,154,2018-11-13,ATM Withdrawal,BKOFAMERICA ATM 11/13 #000009803 WITHDRWL PORTER SQUARE CAMBRIDGE MA,40.0,debit,cash & atm,Weekly Expenses,Spending Money,Spending Money
+155,155,2018-11-13,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 7290271629,60.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+156,156,2018-11-13,Namecheap,NAME-CHEAP.COM 11/10 PURCHASE WWW.NAMECHEAP AZ,13.94,debit,business services,Weekly Expenses,Spending Money,Spending Money
+157,157,2018-11-13,ATM Withdrawal,BKOFAMERICA ATM 11/10 #000004473 WITHDRWL FRESH POND EXPRE CAMBRIDGE MA,20.0,debit,cash & atm,Weekly Expenses,Spending Money,Spending Money
+158,158,2018-11-13,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 7387864820,75.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+159,159,2018-11-13,Provident Ls Tx,PROVIDENT METALS 11/10 PURCHASE 469-3173500 TX,1094.37,debit,movies & dvds,Weekly Expenses,,
+160,160,2018-11-13,J P Licks At Davis Square,JP LICKS AT DAVIS 11/10 PURCHASE SOMERVILLE MA,7.44,debit,groceries,Weekly Expenses,Spending Money,Spending Money
+161,161,2018-11-13,Instacart Httpsinstacar Ca,INSTACART 11/10 PURCHASE HTTPSINSTACAR CA,120.0,debit,groceries,Weekly Expenses,Fixed Cost,Fixed Cost
+162,162,2018-11-13,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 5414640727,25.32,credit,transfer,Weekly Expenses,Transfer,Transfer
+163,163,2018-11-13,Lyft,LYFT *RIDE SAT 2PM 11/10 PURCHASE LYFT.COM CA,11.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+164,164,2018-11-12,Sbd Scentbirdsubscription Scentbird.com,SBD*Scentbirdsubscription scentbird.com NY,14.95,debit,entertainment,nRewards Visa,Spending Money,Spending Money
+165,165,2018-11-12,Digitalocean.com Digitalocean Ny,DIGITALOCEAN.COM DIGITALOCEAN. NY,13.7,debit,business services,nRewards Visa,Spending Money,Spending Money
+166,166,2018-11-12,Culinart,PAYPAL *MASSCULINAR 402-935-7733 CA,125.0,debit,gift,nRewards Visa,Spending Money,Spending Money
+167,167,2018-11-09,Received,ACH PAYMENT RECEIVED,150.0,credit,credit card payment,nRewards Visa,Credit card payment,Spending Money
+168,168,2018-11-09,Transfer to Business Fundamentals Chk,Online scheduled transfer to CHK 7727 Confirmation# 1308953891,50.0,debit,transfer,Deposits,Transfer,Transfer
+169,169,2018-11-09,Debitize,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,3.32,debit,credit card payment,Deposits,Debitize,Debitize
+170,170,2018-11-09,Wire Transfer Fee,Wire Transfer Fee,15.0,debit,fees & charges,Deposits,Fee,Fee
+171,171,2018-11-09,Hsbc Online,HSBC ONLINE DES:TRANSFER ID:XXXXX31737 INDN:GEN OHTA CO ID:XXXXX27921 WEB,400.0,debit,transfer,Deposits,Savings Goal,Savings Goal
+172,172,2018-11-09,Wire Type Book,WIRE TYPE:BOOK IN DATE:181109 TIME:0504 ET TRN:2018110900143670...,1563.3,credit,income,Deposits,,
+173,173,2018-11-09,Dig Inn Season,Dig Inn Season Market - 11/07 PURCHASE New York NY,16.0,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+174,174,2018-11-09,Transfer from Deposits,Online scheduled transfer from CHK 4604 Confirmation# 1308953891,50.0,credit,transfer,Business Fundamentals Chk,Investment,Investment
+175,175,2018-11-08,Debitize,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,107.99,debit,credit card payment,Deposits,Debitize,Debitize
+176,176,2018-11-08,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 2570015000,95.0,debit,transfer,Deposits,Transfer,Transfer
+177,177,2018-11-08,Qapital,QAPITAL DES:TRANSFER ID:XXXXX1444 INDN:GEN OHTA CO ID:XXXXX00003 PPD,446.0,debit,deposit,Deposits,Qapital,Qapital
+178,178,2018-11-08,Qapital Des Transfer,QAPITAL DES:TRANSFER ID:XXXXX2776 INDN:GEN OHTA CO ID:XXXXX00003 PPD,100.0,credit,transfer,Deposits,Qapital,Qapital
+179,179,2018-11-08,Clover Food Lab,SQ *CLOVER FOOD LAB 11/07 PURCHASE Cambridge MA,12.01,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+180,180,2018-11-08,Crazy Dough Pizza,CRAZY DOUGHS PIZZA PRUD 11/06 PURCHASE BOSTON MA,9.0,debit,fast food,Weekly Expenses,Spending Money,Spending Money
+181,181,2018-11-08,Instacart Httpsinstacar Ca,INSTACART 11/06 PURCHASE HTTPSINSTACAR CA,78.24,debit,groceries,Weekly Expenses,Fixed Cost,Fixed Cost
+182,182,2018-11-08,Everlane Everlane.com Ca,EVERLANE INC106307753 11/02 PURCHASE EVERLANE.COM CA,102.95,debit,clothing,Weekly Expenses,Spending Money,Spending Money
+183,183,2018-11-08,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 2570015000,95.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+184,184,2018-11-08,Bagelsaurus,TST* BAGELSAURUS 11/07 PURCHASE CAMBRIDGE MA,7.76,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+185,185,2018-11-08,Shake Shack,POSTMATES SHAKE SHACK 11/06 PURCHASE HTTPSPOSTMATE CA,23.53,debit,fast food,Weekly Expenses,Spending Money,Spending Money
+186,186,2018-11-08,Postmates Tip Httpspostmate,POSTMATES TIP HTTPSPOSTMATE CA,2.57,debit,restaurants,nRewards Visa,Spending Money,Spending Money
+187,187,2018-11-07,Qapital,QAPITAL DES:TRANSFER ID:XXXXX9814 INDN:GEN OHTA CO ID:XXXXX00003 PPD,200.0,debit,deposit,Deposits,Qapital,Qapital
+188,188,2018-11-07,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 1560908367,50.0,debit,transfer,Deposits,Transfer,Transfer
+189,189,2018-11-07,Qapital Des Transfer,QAPITAL DES:TRANSFER ID:XXXXX1815 INDN:GEN OHTA CO ID:XXXXX00003 PPD,900.0,credit,transfer,Deposits,Qapital,Qapital
+190,190,2018-11-07,Bagelsaurus,TST* BAGELSAURUS 11/06 PURCHASE CAMBRIDGE MA,14.07,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+191,191,2018-11-07,Audible.com,Audible US 11/06 PURCHASE 888-283-5051 NJ,14.95,debit,books,Weekly Expenses,Spending Money,Spending Money
+192,192,2018-11-07,Au Bon Pain,COPLEY PLC AUBONPAIN 2 11/05 PURCHASE BOSTON MA,8.86,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+193,193,2018-11-07,Lyft,LYFT *RIDE MON 8AM 11/06 PURCHASE LYFT.COM CA,21.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+194,194,2018-11-07,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 1560908367,50.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+195,195,2018-11-07,CVS,CVS/PHARMACY # 11/07 PURCHASE CAMBRIDGE MA,16.3,debit,pharmacy,Weekly Expenses,Spending Money,Spending Money
+196,196,2018-11-07,Saloniki,POSTMATES SALONIKI GRE HTTPSPOSTMATE CA,25.67,debit,personal care,nRewards Visa,Spending Money,Spending Money
+197,197,2018-11-06,Online Banking Transfer,Online Banking transfer to CHK 0197 Confirmation# 6351164589,28.0,debit,transfer,Deposits,Transfer,Transfer
+198,198,2018-11-06,Online Banking Transfer,Online Banking transfer to CHK 0197 Confirmation# 6251166388,100.0,debit,transfer,Deposits,Transfer,Transfer
+199,199,2018-11-06,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 3355237101,50.0,debit,transfer,Deposits,Transfer,Transfer
+200,200,2018-11-06,Debitize,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,31.0,debit,credit card payment,Deposits,Debitize,Debitize
+201,201,2018-11-06,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 3255400555,50.0,debit,transfer,Deposits,Transfer,Transfer
+202,202,2018-11-06,Transfer to Weekly Expenses,HSBC BANK DES:ACCT FUND ID:XXXXX96731 INDN:GEN OHTA CO ID:XXXXX27921 WEB,100.0,debit,transfer,Deposits,Savings Goals,Spending Money
+203,203,2018-11-06,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 3255400555,50.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+204,204,2018-11-06,Woops Worth Street,WOOPS - WORTH STREET 11/03 PURCHASE NEW YORK NY,14.86,debit,coffee shops,Weekly Expenses,Spending Money,Spending Money
+205,205,2018-11-06,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 6351164589,28.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+206,206,2018-11-06,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 3355237101,50.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+207,207,2018-11-06,Oath Craft Pizza,TST* OATH CRAFT PIZZA 11/04 PURCHASE SOMERVILLE MA,7.49,debit,fast food,Weekly Expenses,Spending Money,Spending Money
+208,208,2018-11-06,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 6251166388,100.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+209,209,2018-11-06,Lyft,LYFT *RIDE SUN 2PM 11/05 PURCHASE LYFT.COM CA,16.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+210,210,2018-11-06,Milk Bar Nolita,Milk Bar Nolita 11/04 PURCHASE Brooklyn NY,15.35,debit,alcohol & bars,Weekly Expenses,Spending Money,Spending Money
+211,211,2018-11-06,Postmates Tip Httpspostmate,POSTMATES TIP HTTPSPOSTMATE CA,3.32,debit,restaurants,nRewards Visa,Spending Money,Spending Money
+212,212,2018-11-06,Mail Remittance Received,MAIL REMITTANCE PAYMENT RECEIVED,456.78,credit,credit card payment,nRewards Visa,Debitize,Debitize
+213,213,2018-11-05,ATM Fee,DRD30107000000 11/02 #000167007 WITHDRWL Cardtronics CCSP NEW YORK NY,3.0,debit,atm fee,Weekly Expenses,Fee,Spending Money
+214,214,2018-11-05,Drd Withdrwl Cardtronics,DRD30107000000 11/02 #000167007 WITHDRWL Cardtronics CCSP NEW YORK NY,20.0,debit,cash & atm,Weekly Expenses,Spending Money,Spending Money
+215,215,2018-11-05,Od Protection Fee,OD PROTECTION FEE REFUND FDES NMO 0006576 241080,12.0,credit,bank fee,Deposits,Fee,Fee
+216,216,2018-11-05,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 1128085199,100.0,debit,transfer,Deposits,Transfer,Transfer
+217,217,2018-11-05,Transfer to Weekly Expenses,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,28.0,debit,transfer,Deposits,Debitize,Debitize
+218,218,2018-11-05,Vanguard,VANGUARD BUY DES:INVESTMENT ID:XXXXX9410150718 INDN:GEN D OHTA CO ID:VMC PUR PPD,25.0,debit,financial,Deposits,Investment,Investment
+219,219,2018-11-05,Account Maintenance Fee,MONTHLY SERVICE CHARGE REFUND FDES NMO 0006576 241080,24.0,credit,bank fee,Bills,,
+220,220,2018-11-05,CVS,CVS/PHARMACY # 11/04 PURCHASE CAMBRIDGE MA,7.98,debit,pharmacy,Weekly Expenses,Spending Money,Spending Money
+221,221,2018-11-05,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 1128085199,100.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+222,222,2018-11-05,Efx Withdrwl Eft,EFX 11/05 #000458815 WITHDRWL EFT Somerville MA FEE,2.5,debit,cash & atm,Weekly Expenses,Fee,Fee
+223,223,2018-11-05,Efx Withdrwl Eft,EFX 11/04 #000423912 WITHDRWL EFT Somerville MA FEE,2.5,debit,cash & atm,Weekly Expenses,Fee,Fee
+224,224,2018-11-05,Dig Inn Seas,DIG INN SEAS 11/02 PURCHASE 212-545-7867 NY,15.0,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+225,225,2018-11-05,Lyft,LYFT *RIDE SUN 1AM 11/04 PURCHASE LYFT.COM CA,23.0,debit,rental car & taxi,Weekly Expenses,Spending Money,Spending Money
+226,226,2018-11-05,Au Bon Pain,COPLEY PLC AUBONPAIN 2 11/02 PURCHASE BOSTON MA,8.86,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+227,227,2018-11-05,Efx Withdrwl Eft,EFX 11/04 #000423912 WITHDRWL EFT Somerville MA,15.5,debit,cash & atm,Weekly Expenses,,
+228,228,2018-11-05,Drd Withdrwl Cardtronics,DRD30107000000 11/02 #000167007 WITHDRWL Cardtronics CCSP NEW YORK NY FEE,2.5,debit,cash & atm,Weekly Expenses,Fee,Fee
+229,229,2018-11-05,Efx Withdrwl Eft,EFX 11/05 #000458815 WITHDRWL EFT Somerville MA,27.5,debit,cash & atm,Weekly Expenses,,
+230,230,2018-11-05,Waverly Restaurant,WAVERLY RESTAURANT 11/03 PURCHASE NEW YORK NY,20.65,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+231,231,2018-11-05,Blue Bottle Coffee,SQ *BLUE BOTTLE COFFEE 11/02 PURCHASE Boston MA,4.81,debit,coffee shops,Weekly Expenses,Spending Money,Spending Money
+232,232,2018-11-05,Chai Spot N,SQ *THE CHAI SPOT N 11/03 PURCHASE NEW YORK NY,8.08,debit,coffee shops,Weekly Expenses,Spending Money,Spending Money
+233,233,2018-11-05,Ivan Ramen,TST* IVAN RAMEN USA - 2 11/03 PURCHASE NEW YORK NY,55.27,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+234,234,2018-11-05,Sunny Body Work,SUNNY BODY WORK INC 11/03 PURCHASE NEW YORK NY,54.0,debit,spa & massage,Weekly Expenses,Spending Money,Spending Money
+235,235,2018-11-05,Tst Two Hands,TST* TWO HANDS - MOTT S 11/03 PURCHASE NEW YORK NY,62.5,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+236,236,2018-11-05,Famous Famiglia,FAMOUS FAMIGLIA 11/02 PURCHASE NEW YORK NY,5.5,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+237,237,2018-11-05,Lyft,LYFT *RIDE SAT 9PM LYFT.COM CA,26.0,debit,rental car & taxi,nRewards Visa,Spending Money,Spending Money
+238,238,2018-11-05,Lyft,LYFT *RIDE FRI 11PM LYFT.COM CA,13.0,debit,rental car & taxi,nRewards Visa,Spending Money,Spending Money
+239,239,2018-11-05,Lyft,LYFT *RIDE FRI 4PM LYFT.COM CA,12.0,debit,rental car & taxi,nRewards Visa,Spending Money,Spending Money
+240,240,2018-11-05,Lyft,LYFT *RIDE THU 8PM LYFT.COM CA,8.0,debit,rental car & taxi,nRewards Visa,Spending Money,Spending Money
+241,241,2018-11-05,Amazon,AMZN Mktp US*M89SL3V91 Amzn.com/bill WA,11.99,debit,shopping,nRewards Visa,Spending Money,Spending Money
+242,242,2018-11-05,Lyft,LYFT *RIDE SAT 9AM LYFT.COM CA,12.0,debit,rental car & taxi,nRewards Visa,Spending Money,Spending Money
+243,243,2018-11-05,Lyft,LYFT *RIDE FRI 8AM LYFT.COM CA,25.0,debit,rental car & taxi,nRewards Visa,Spending Money,Spending Money
+244,244,2018-11-02,Wayfair Llc Des,"WAYFAIR LLC DES:DIRECT DEP ID:XXXXX8478635HV5 INDN:OHTA,GEN D CO...",2394.76,credit,paycheck,Deposits,Income,Income
+245,245,2018-11-02,Transfer to Bills,Online scheduled transfer to CHK 1524 Confirmation# 1307393297,100.0,debit,transfer,Deposits,Transfer,Transfer
+246,246,2018-11-02,Transfer to Bills,Online scheduled transfer to CHK 1524 Confirmation# 1307393295,1250.0,debit,transfer,Deposits,Transfer,Transfer
+247,247,2018-11-02,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 2420305908,200.0,debit,transfer,Deposits,Transfer,Transfer
+248,248,2018-11-02,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 1516574273,153.23,debit,transfer,Deposits,Transfer,Transfer
+249,249,2018-11-02,Transfer to Business Fundamentals Chk,Online scheduled transfer to CHK 7727 Confirmation# 1307393296,50.0,debit,transfer,Deposits,Transfer,Transfer
+250,250,2018-11-02,Debitize,Debitize DES:DEBIT ID: INDN:General D Ohta CO ID:XXXXX96710 WEB PMT...,22.11,debit,credit card payment,Deposits,Debitize,Debitize
+251,251,2018-11-02,Transfer from Deposits,Online scheduled transfer from CHK 4604 Confirmation# 1307393295,1250.0,credit,transfer,Bills,Transfer,Transfer
+252,252,2018-11-02,Willow Land,Bill Pay Check 5028: WILLOW LAND CORPORATION,2600.0,debit,mortgage & rent,Bills,Fixed Cost,Fixed Cost
+253,253,2018-11-02,Transfer from Deposits,Online scheduled transfer from CHK 4604 Confirmation# 1307393297,100.0,credit,transfer,Bills,Transfer,Transfer
+254,254,2018-11-02,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 2420305908,200.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+255,255,2018-11-02,Dig Inn Seas,DIG INN SEAS 11/01 PURCHASE 212-545-7867 NY,13.0,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+256,256,2018-11-02,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 1516574273,153.23,credit,transfer,Weekly Expenses,Transfer,Transfer
+257,257,2018-11-02,Salon Acote,SALON ACOTE 10/31 PURCHASE BOSTON MA,60.0,debit,hair,Weekly Expenses,Spending Money,Spending Money
+258,258,2018-11-02,Transfer from Deposits,Online scheduled transfer from CHK 4604 Confirmation# 1307393296,50.0,credit,transfer,Business Fundamentals Chk,Investment,Investment
+259,259,2018-11-02,Lyft,LYFT *RIDE TUE 7AM LYFT.COM CA,31.0,debit,rental car & taxi,nRewards Visa,Spending Money,Spending Money
+260,260,2018-11-01,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 7511992596,20.0,debit,transfer,Deposits,Transfer,Transfer
+261,261,2018-11-01,Transfer to Weekly Expenses,Online Banking transfer to CHK 0197 Confirmation# 5311920501,50.0,debit,transfer,Deposits,Transfer,Transfer
+262,262,2018-11-01,Venmo Des Cashout,VENMO DES:CASHOUT ID:XXXXX27887 INDN:GEN OHTA CO ID:XXXXX81992 PPD,1000.0,credit,mortgage & rent,Deposits,Venmo Deposit,Venmo Deposit
+263,263,2018-11-01,Efx Withdrwl Eft,EFX 11/01 #000231977 WITHDRWL EFT Somerville MA FEE,2.5,debit,cash & atm,Weekly Expenses,Fee,Fee
+264,264,2018-11-01,Dig Inn Season,Dig Inn Season Market - 10/30 PURCHASE New York NY,12.25,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+265,265,2018-11-01,Bagelsaurus,TST* BAGELSAURUS 10/31 PURCHASE CAMBRIDGE MA,7.76,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+266,266,2018-11-01,Black Seed Cafe & Grill,BLACK SEED CAFE AND GRI 10/30 PURCHASE BOSTON MA,3.28,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+267,267,2018-11-01,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 7511992596,20.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+268,268,2018-11-01,Efx Withdrwl Eft,EFX 11/01 #000231977 WITHDRWL EFT Somerville MA,75.5,debit,cash & atm,Weekly Expenses,,
+269,269,2018-11-01,Boston Market,EATALY BOSTON MARKET 10/31 PURCHASE BOSTON MA,12.63,debit,restaurants,Weekly Expenses,Spending Money,Spending Money
+270,270,2018-11-01,Transfer from Deposits,Online Banking transfer from CHK 4604 Confirmation# 5311920501,50.0,credit,transfer,Weekly Expenses,Transfer,Transfer
+271,271,2018-11-01,Account Maintenance Fee,Monthly Fee for Business Fundamentals,16.0,debit,bank fee,Business Fundamentals Chk,Fee,Fee
