@@ -150,7 +150,7 @@ def test_get_groceries_return_selected(test_transactions):
 
 def test_get_debitize_payments(test_transactions):
   july, august, september = test_transactions
-  assert incomestatement.get_debitize_payments(july) == 200
+  assert incomestatement.get_debitize_payments(july) == 800.82
   assert incomestatement.get_debitize_payments(august) == 1359.88
   assert incomestatement.get_debitize_payments(september) == 1248.08
 
@@ -158,13 +158,13 @@ def test_get_debitize_payments_return_selected(test_transactions):
   for month in test_transactions:
     selected_records = incomestatement.get_debitize_payments(month, return_selected=True)
     descriptions = selected_records.original_description
-    assert all(['debitize' in description.lower() for description in descriptions])
+    assert all(['debitize' in description.lower() or 'payment received' for description in descriptions])
 
 def test_get_nfcu_payments(test_transactions):
   july, august, september = test_transactions
-  assert incomestatement.get_nfcu_payments(july) == 1395.65
-  assert incomestatement.get_nfcu_payments(august) == 775.23
-  assert incomestatement.get_nfcu_payments(september) == 986.01
+  assert incomestatement.get_nfcu_payments(july) == 600.82
+  assert incomestatement.get_nfcu_payments(august) == 0.0
+  assert incomestatement.get_nfcu_payments(september) == 0.0
 
 def test_get_nfcu_payments_return_selected(test_transactions):
   for month in test_transactions:
@@ -249,9 +249,9 @@ def test_get_savings_goals(test_transactions):
 def test_get_discretionary_spending(test_transactions):
   # TODO revisit these assertions after going over all of the transactions
   july, august, september = test_transactions
-  assert incomestatement.get_discretionary_spending(july) == 4743.44
-  assert incomestatement.get_discretionary_spending(august) == 6034.55
-  assert incomestatement.get_discretionary_spending(september) == 8526.0
+  assert incomestatement.get_discretionary_spending(july) == 4937.45
+  assert incomestatement.get_discretionary_spending(august) == 6809.78
+  assert incomestatement.get_discretionary_spending(september) == 9512.01
 
 def test_get_discretionary_spending_return_selected(test_transactions):
   for month in test_transactions:
@@ -327,3 +327,12 @@ def test_week_to_day_transactions(monkeypatch):
     assert expected_end_date.year == actual_end_date.year
     assert expected_end_date.month == actual_end_date.month
     assert expected_end_date.day >= actual_end_date.day
+
+def test_get_credit_utilization(monkeypatch):
+    def mock_get_accounts():
+      accounts = pd.read_pickle('tests/accounts.pickle')
+      return accounts
+
+    monkeypatch.setattr(utilities,'get_accounts', mock_get_accounts)
+
+    assert incomestatement.get_credit_utilization() == '105.14%'

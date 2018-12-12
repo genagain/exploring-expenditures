@@ -15,7 +15,7 @@ def sum_amounts(transactions, return_selected=False):
       return np.round(total_amount, 2)
 
 def get_income(transactions, return_selected=False):
-    idx = transactions.original_description.str.contains('(?i)wayfair|gusto')
+    idx = transactions.original_description.str.contains('(?i)wayfair|gusto|launch')
     return sum_amounts(transactions[idx], return_selected)
 
 def get_transportation_expenses(transactions, return_selected=False):
@@ -174,3 +174,11 @@ def week_to_day_transactions():
     transactions = utilities.get_transactions()
     idx = (transactions.date >= sun) & (transactions.date <= yesterday)
     return transactions[idx]
+
+def get_credit_utilization():
+    accounts = utilities.get_accounts()
+    credit_card_account = filter(lambda account: account['accountName']=='nRewards Visa', accounts)[0]
+    credit_limit = 1000.0
+    balance = credit_card_account['currentBalance']
+    credit_utilization = np.round(balance/credit_limit, decimals=4) * 100
+    return '{}%'.format(credit_utilization)
