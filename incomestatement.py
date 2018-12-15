@@ -1,11 +1,13 @@
 from collections import OrderedDict
+import calendar
 from datetime import datetime, timedelta
 import  mintapi
 import numpy as np
 import os
 import pandas as pd
-from config import OPTIMAL_BREAKDOWN
+from config import OPTIMAL_BREAKDOWN, EXPECTED_SUMMARY
 import utilities
+import assigninglabels
 
 def sum_amounts(transactions, return_selected=False):
     if return_selected:
@@ -168,11 +170,29 @@ def get_discretionary_spending(transactions, return_selected=False):
 
 def week_to_day_transactions():
     today = datetime.now()
-    day_num = (today.weekday() + 1) % 7
+    day_num = today.weekday() + 1
     sun = today - timedelta(day_num)
     yesterday = today - timedelta(1)
     transactions = utilities.get_transactions()
     idx = (transactions.date >= sun) & (transactions.date <= yesterday)
+    return transactions[idx]
+
+def month_to_day_transactions():
+    today = datetime.now()
+    first_day = today - timedelta(today.day - 1)
+    yesterday = today - timedelta(1)
+    transactions = utilities.get_transactions()
+    idx = (transactions.date >= first_day) & (transactions.date <= yesterday)
+    return transactions[idx]
+
+def last_month_transactions():
+    today = datetime.now()
+    last_month_num = today.month - 1
+    first_day = datetime(today.year, last_month_num, 1)
+    last_day_num = calendar.monthrange(today.year,last_month_num)[1]
+    last_day = datetime(today.year, last_month_num, last_day_num)
+    transactions = utilities.get_transactions()
+    idx = (transactions.date >= first_day) & (transactions.date <= last_day)
     return transactions[idx]
 
 def get_credit_utilization():
@@ -182,3 +202,41 @@ def get_credit_utilization():
     balance = credit_card_account['currentBalance']
     credit_utilization = np.round(balance/credit_limit, decimals=4) * 100
     return '{}%'.format(credit_utilization)
+
+def conscious_spending_maintainance(timeframe):
+    if timeframe == 'week to day':
+      transactions = week_to_day_transactions()
+    elif timeframe == 'month to day':
+      transactions = month_to_day_transactions()
+    elif timeframe == 'last month':
+      transactions = last_month_transactions()
+    # TODO account for other two time frames
+
+    labeled_transactions = assigninglabels.label(transactions, timeframe)
+
+    fixed_costs = get_fixed_costs(transactions)
+    long_term_investments = get_investments(transactions)
+    savings_goals = get_savings_goals(transactions)
+    spending_money = get_discretionary_spending(transactions)
+
+    total = fixed_costs + long_term_investments + savings_goals + spending_money
+
+    fixed_costs_percentage = np.round(fixed_costs / total * 100, 2)
+    long_term_investments_percentage = np.round(long_term_investments / total * 100, 2)
+    savings_goals_percentage = np.round(savings_goals / total * 100, 2)
+    spending_money_percentage = np.round(spending_money / total * 100, 2)
+
+    expected_summary = EXPECTED_SUMMARY[timeframe]
+
+    # TODO write a config file with expected monthly and weekly amounts and percentages
+    summary = [
+      {'category':'Fixed Costs', 'actual_amount':fixed_costs, 'expected_amount':expected_summary['Fixed Costs']['amount'],'actual_percentage':fixed_costs_percentage, 'expected_percentage':expected_summary['Fixed Costs']['percentage'] },
+      {'category':'Long Term Investments', 'actual_amount':long_term_investments, 'expected_amount':expected_summary['Long Term Investments']['amount'],'actual_percentage':long_term_investments_percentage, 'expected_percentage':expected_summary['Long Term Investments']['percentage'] },
+      {'category':'Savings Goals', 'actual_amount':savings_goals, 'expected_amount':expected_summary['Savings Goals']['amount'],'actual_percentage':savings_goals_percentage, 'expected_percentage':expected_summary['Savings Goals']['percentage'] },
+      {'category':'Spending Money', 'actual_amount':spending_money, 'expected_amount':expected_summary['Spending Money']['amount'],'actual_percentage':spending_money_percentage, 'expected_percentage':expected_summary['Spending Money']['percentage'] },
+    ]
+
+    today = datetime.today()
+    summary_df = pd.DataFrame(summary)
+    output_file = '{}_summary_{}_{}_{}.csv'.format(timeframe.replace(' ', '_'),today.day, today.month, today.year)
+    summary_df.to_csv(output_file, index=False)

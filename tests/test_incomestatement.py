@@ -10,7 +10,6 @@ import utilities
 # TODO refactor with a config file of tokens for each aggregation
 # TODO ensure that all assertions have two decimal places unless it's zero
 # TODO only use october, november, december
-# TODO think about how to account for cashing out wayfair stocks
 
 @pytest.fixture
 def test_transactions():
@@ -278,10 +277,8 @@ def test_get_discretionary_spending_return_selected(test_transactions):
       assert overlap == False
 
 
-# TODO test Sunday
-# TODO test another day later than monday
 @freeze_time("Sept 23rd, 2018")
-def test_week_to_day_transactions(monkeypatch):
+def test_week_to_day_transactions_sun(monkeypatch):
     def mock_get_transactions():
       transactions = pd.read_pickle('tests/transactions.pickle')
       return transactions
@@ -304,8 +301,8 @@ def test_week_to_day_transactions(monkeypatch):
     assert expected_end_date.month == actual_end_date.month
     assert expected_end_date.day >= actual_end_date.day
 
-@freeze_time("Sept 26rd, 2018")
-def test_week_to_day_transactions(monkeypatch):
+@freeze_time("Sept 26th, 2018")
+def test_week_to_day_transactions_wed(monkeypatch):
     def mock_get_transactions():
       transactions = pd.read_pickle('tests/transactions.pickle')
       return transactions
@@ -334,5 +331,213 @@ def test_get_credit_utilization(monkeypatch):
       return accounts
 
     monkeypatch.setattr(utilities,'get_accounts', mock_get_accounts)
-
     assert incomestatement.get_credit_utilization() == '105.14%'
+
+@freeze_time("Sept 23rd, 2018")
+def test_month_to_day_transactions(monkeypatch):
+    def mock_get_transactions():
+      transactions = pd.read_pickle('tests/transactions.pickle')
+      return transactions
+
+    monkeypatch.setattr(utilities,'get_transactions', mock_get_transactions)
+
+    expected_start_date = datetime(2018, 9, 1)
+    expected_end_date = datetime(2018, 9, 22)
+
+    weeks_transactions = incomestatement.month_to_day_transactions()
+
+    actual_start_date = weeks_transactions.date.min()
+    actual_end_date = weeks_transactions.date.max()
+
+    assert expected_start_date.year == actual_start_date.year
+    assert expected_start_date.month == actual_start_date.month
+    assert expected_start_date.day <= actual_start_date.day
+
+    assert expected_end_date.year == actual_end_date.year
+    assert expected_end_date.month == actual_end_date.month
+    assert expected_end_date.day >= actual_end_date.day
+
+@freeze_time("Sept 23rd, 2018")
+def test_last_month_transactions(monkeypatch):
+    def mock_get_transactions():
+      transactions = pd.read_pickle('tests/transactions.pickle')
+      return transactions
+
+    monkeypatch.setattr(utilities,'get_transactions', mock_get_transactions)
+
+    expected_start_date = datetime(2018, 8, 1)
+    expected_end_date = datetime(2018, 8, 31)
+
+    weeks_transactions = incomestatement.last_month_transactions()
+
+    actual_start_date = weeks_transactions.date.min()
+    actual_end_date = weeks_transactions.date.max()
+
+    assert expected_start_date.year == actual_start_date.year
+    assert expected_start_date.month == actual_start_date.month
+    assert expected_start_date.day <= actual_start_date.day
+
+    assert expected_end_date.year == actual_end_date.year
+    assert expected_end_date.month == actual_end_date.month
+    assert expected_end_date.day >= actual_end_date.day
+
+@freeze_time("Sept 30th, 2018")
+def test_conscious_spending_maintainance_week_to_day(monkeypatch):
+    def mock_get_transactions():
+      transactions = pd.read_pickle('tests/transactions.pickle')
+      return transactions
+
+    monkeypatch.setattr(utilities,'get_transactions', mock_get_transactions)
+
+    expected_columns = [
+      'date',
+      'original_description',
+      'amount',
+      'category',
+      'account_name',
+      'automatic_label'
+    ]
+    expected_start_date = datetime(2018, 9, 23)
+    expected_end_date = datetime(2018, 9, 29)
+
+    incomestatement.conscious_spending_maintainance('week to day')
+
+    weeks_transactions_labeled = pd.read_csv('week_to_day_maintainance_30_9_2018.csv')
+
+    actual_start_date_string = weeks_transactions_labeled.date.min()
+    actual_end_date_string = weeks_transactions_labeled.date.max()
+
+    actual_start_date = datetime.strptime(actual_start_date_string, '%Y-%m-%d')
+    actual_end_date = datetime.strptime(actual_end_date_string, '%Y-%m-%d')
+
+    assert list(weeks_transactions_labeled.columns) == expected_columns
+
+    assert expected_start_date.year == actual_start_date.year
+    assert expected_start_date.month == actual_start_date.month
+    assert expected_start_date.day <= actual_start_date.day
+
+    assert expected_end_date.year == actual_end_date.year
+    assert expected_end_date.month == actual_end_date.month
+    assert expected_end_date.day >= actual_end_date.day
+
+    assert len(weeks_transactions_labeled) == weeks_transactions_labeled.count().automatic_label
+
+    weeks_transactions_summary = pd.read_csv('week_to_day_summary_30_9_2018.csv')
+
+    expected_summary = pd.DataFrame([
+      {'category':'Fixed Costs', 'actual_amount':457.60, 'expected_amount':175, 'actual_percentage':31.09, 'expected_percentage':15.2},
+      {'category':'Long Term Investments', 'actual_amount':75.00, 'expected_amount':300, 'actual_percentage':5.09, 'expected_percentage':26.1},
+      {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':375, 'actual_percentage':0, 'expected_percentage':32.6},
+      {'category':'Spending Money', 'actual_amount':939.46, 'expected_amount':300, 'actual_percentage':63.82, 'expected_percentage':26.1},
+    ])
+
+    assert weeks_transactions_summary.equals(expected_summary)
+
+@freeze_time("Sept 30th, 2018")
+def test_conscious_spending_maintainance_month_to_day(monkeypatch):
+    def mock_get_transactions():
+      transactions = pd.read_pickle('tests/transactions.pickle')
+      return transactions
+
+    monkeypatch.setattr(utilities,'get_transactions', mock_get_transactions)
+
+    expected_columns = [
+      'date',
+      'original_description',
+      'amount',
+      'category',
+      'account_name',
+      'automatic_label'
+    ]
+    expected_start_date = datetime(2018, 9, 1)
+    expected_end_date = datetime(2018, 9, 29)
+
+    incomestatement.conscious_spending_maintainance('month to day')
+
+    weeks_transactions_labeled = pd.read_csv('month_to_day_maintainance_30_9_2018.csv')
+
+    actual_start_date_string = weeks_transactions_labeled.date.min()
+    actual_end_date_string = weeks_transactions_labeled.date.max()
+
+    actual_start_date = datetime.strptime(actual_start_date_string, '%Y-%m-%d')
+    actual_end_date = datetime.strptime(actual_end_date_string, '%Y-%m-%d')
+
+    assert list(weeks_transactions_labeled.columns) == expected_columns
+
+    assert expected_start_date.year == actual_start_date.year
+    assert expected_start_date.month == actual_start_date.month
+    assert expected_start_date.day <= actual_start_date.day
+
+    assert expected_end_date.year == actual_end_date.year
+    assert expected_end_date.month == actual_end_date.month
+    assert expected_end_date.day >= actual_end_date.day
+
+    assert len(weeks_transactions_labeled) == weeks_transactions_labeled.count().automatic_label
+
+    weeks_transactions_summary = pd.read_csv('month_to_day_summary_30_9_2018.csv')
+
+    expected_summary = pd.DataFrame([
+      {'category':'Fixed Costs', 'actual_amount':2490.60, 'expected_amount':2800, 'actual_percentage':20.24, 'expected_percentage':41.5},
+      {'category':'Long Term Investments', 'actual_amount':300.00, 'expected_amount':1200, 'actual_percentage':2.44, 'expected_percentage':17},
+      {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':1500, 'actual_percentage':0, 'expected_percentage':23},
+      {'category':'Spending Money', 'actual_amount':9512.01, 'expected_amount':1250, 'actual_percentage':77.32, 'expected_percentage':18.5},
+    ])
+
+    assert weeks_transactions_summary.equals(expected_summary)
+
+@freeze_time("Sept 30th, 2018")
+def test_conscious_spending_maintainance_last_month(monkeypatch):
+    def mock_get_transactions():
+      transactions = pd.read_pickle('tests/transactions.pickle')
+      return transactions
+
+    monkeypatch.setattr(utilities,'get_transactions', mock_get_transactions)
+
+    expected_columns = [
+      'date',
+      'original_description',
+      'amount',
+      'category',
+      'account_name',
+      'automatic_label'
+    ]
+    expected_start_date = datetime(2018, 8, 1)
+    expected_end_date = datetime(2018, 8, 31)
+
+    incomestatement.conscious_spending_maintainance('last month')
+
+    weeks_transactions_labeled = pd.read_csv('last_month_maintainance_30_9_2018.csv')
+
+    actual_start_date_string = weeks_transactions_labeled.date.min()
+    actual_end_date_string = weeks_transactions_labeled.date.max()
+
+    actual_start_date = datetime.strptime(actual_start_date_string, '%Y-%m-%d')
+    actual_end_date = datetime.strptime(actual_end_date_string, '%Y-%m-%d')
+
+    assert list(weeks_transactions_labeled.columns) == expected_columns
+
+    assert expected_start_date.year == actual_start_date.year
+    assert expected_start_date.month == actual_start_date.month
+    assert expected_start_date.day <= actual_start_date.day
+
+    assert expected_end_date.year == actual_end_date.year
+    assert expected_end_date.month == actual_end_date.month
+    assert expected_end_date.day >= actual_end_date.day
+
+    assert len(weeks_transactions_labeled) == weeks_transactions_labeled.count().automatic_label
+
+    weeks_transactions_summary = pd.read_csv('last_month_summary_30_9_2018.csv')
+
+    expected_summary = pd.DataFrame([
+      {'category':'Fixed Costs', 'actual_amount':3403.49, 'expected_amount':2800, 'actual_percentage':31.33, 'expected_percentage':41.5},
+      {'category':'Long Term Investments', 'actual_amount':550.00, 'expected_amount':1200, 'actual_percentage':5.06, 'expected_percentage':17},
+      {'category':'Savings Goals', 'actual_amount':100.00, 'expected_amount':1500, 'actual_percentage':0.92, 'expected_percentage':23},
+      {'category':'Spending Money', 'actual_amount':6809.78, 'expected_amount':1250, 'actual_percentage':62.69, 'expected_percentage':18.5},
+    ])
+
+    assert weeks_transactions_summary.equals(expected_summary)
+
+
+
+# TODO do same thing to for this month to day
+# TODO do same thing for last month
