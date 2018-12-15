@@ -1,4 +1,10 @@
 stmt.csv
 clean_transactions.csv
 env
-transactions.pickle
+venv
+*.pickle
+__pycache__
+.cache
+chromedriver
+*.pyc
+*.swp

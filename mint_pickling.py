@@ -3,6 +3,7 @@ import pickle
 import os
 
 mint = mintapi.Mint(os.environ['EMAIL'], os.environ['PASSWORD'])
+mint.initiate_account_refresh()
 transactions = mint.get_transactions()
 transactions.drop_duplicates(['date','original_description','amount'], inplace=True)
 transactions = transactions.drop(['labels','notes'], 1)
