@@ -86,7 +86,7 @@ def get_debitize_payments(transactions, return_selected=False):
 
 def get_nfcu_payments(transactions, return_selected=False):
    # TODO rethink how this is computed while selecting all of the relevant records
-    idx = transactions.original_description.str.contains('(?i)nfcu ach des:')
+    idx = transactions.original_description.str.contains('(?i)nfcu ach des:|mob payment received')
     return sum_amounts(transactions[idx], return_selected)
 
 def get_nfcu_interest(transactions, return_selected=False):
@@ -103,7 +103,7 @@ def get_overdraft_no_fees(transactions, return_selected=False):
     return sum_amounts(transactions[idx], return_selected)
 
 def get_transfers(transactions, return_selected=False):
-    idx = transactions.original_description.str.contains('(?i)transfer|wire type:intl in date|irs des:usataxpymt|return of posted check')
+    idx = transactions.original_description.str.contains('(?i)transfer|wire type:intl in date|irs des:usataxpymt|return of posted check|deposit')
     return sum_amounts(transactions[idx], return_selected)
 
 def get_fixed_costs(transactions, return_selected=False):
@@ -161,10 +161,13 @@ def get_discretionary_spending(transactions, return_selected=False):
       overdraft
     ])
 
-    discretionary_transactions = transactions[~transactions.isin(necessary_spending)].dropna()
+    necessary_spending_index = necessary_spending.index.values
+    transactions_idx = transactions.index.values
+    diff_idx = np.setdiff1d(transactions_idx, necessary_spending_index)
+    discretionary_transactions = transactions.loc[diff_idx]
 
     # Drop transfers here to no interfere with my investments logic
-    idx = ~(discretionary_transactions.original_description.str.contains('(?i)transfer|wire type:intl in date|irs des:usataxpymt|return of posted check'))
+    idx = ~(discretionary_transactions.original_description.str.contains('(?i)transfer|wire type:intl in date|irs des:usataxpymt|return of posted check|deposit'))
     discretionary_transactions = discretionary_transactions[idx]
     return sum_amounts(discretionary_transactions, return_selected)
 
