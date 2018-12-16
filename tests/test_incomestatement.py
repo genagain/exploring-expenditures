@@ -249,7 +249,7 @@ def test_get_discretionary_spending(test_transactions):
   # TODO revisit these assertions after going over all of the transactions
   july, august, september = test_transactions
   assert incomestatement.get_discretionary_spending(july) == 4937.45
-  assert incomestatement.get_discretionary_spending(august) == 6809.78
+  assert incomestatement.get_discretionary_spending(august) == 6759.78
   assert incomestatement.get_discretionary_spending(september) == 9512.01
 
 def test_get_discretionary_spending_return_selected(test_transactions):
@@ -529,15 +529,11 @@ def test_conscious_spending_maintainance_last_month(monkeypatch):
     weeks_transactions_summary = pd.read_csv('last_month_summary_30_9_2018.csv')
 
     expected_summary = pd.DataFrame([
-      {'category':'Fixed Costs', 'actual_amount':3403.49, 'expected_amount':2800, 'actual_percentage':31.33, 'expected_percentage':41.5},
-      {'category':'Long Term Investments', 'actual_amount':550.00, 'expected_amount':1200, 'actual_percentage':5.06, 'expected_percentage':17},
+      {'category':'Fixed Costs', 'actual_amount':3403.49, 'expected_amount':2800, 'actual_percentage':31.48, 'expected_percentage':41.5},
+      {'category':'Long Term Investments', 'actual_amount':550.00, 'expected_amount':1200, 'actual_percentage':5.09, 'expected_percentage':17},
       {'category':'Savings Goals', 'actual_amount':100.00, 'expected_amount':1500, 'actual_percentage':0.92, 'expected_percentage':23},
-      {'category':'Spending Money', 'actual_amount':6809.78, 'expected_amount':1250, 'actual_percentage':62.69, 'expected_percentage':18.5},
+      {'category':'Spending Money', 'actual_amount':6759.78, 'expected_amount':1250, 'actual_percentage':62.51, 'expected_percentage':18.5},
     ])
 
     assert weeks_transactions_summary.equals(expected_summary)
 
-
-
-# TODO do same thing to for this month to day
-# TODO do same thing for last month
