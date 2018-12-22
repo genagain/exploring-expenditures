@@ -155,6 +155,12 @@ def test_get_digital_ocean(test_transactions):
   assert incomestatement.get_digital_ocean(august) == 6
   assert incomestatement.get_digital_ocean(september) == 6
 
+def test_get_audible(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_audible(july) == 14.95
+  assert incomestatement.get_audible(august) == 14.95
+  assert incomestatement.get_audible(september) == 14.95
+
 def test_get_groceries_return_selected(test_transactions):
   for month in test_transactions:
     selected_records = incomestatement.get_groceries(month, return_selected=True)
