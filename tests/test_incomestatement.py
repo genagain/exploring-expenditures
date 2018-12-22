@@ -167,6 +167,12 @@ def test_get_curology(test_transactions):
   assert incomestatement.get_curology(august) == 0
   assert incomestatement.get_curology(september) == 0
 
+def test_get_native(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_native(july) == 0
+  assert incomestatement.get_native(august) == 0
+  assert incomestatement.get_native(september) == 0
+
 def test_get_groceries_return_selected(test_transactions):
   for month in test_transactions:
     selected_records = incomestatement.get_groceries(month, return_selected=True)

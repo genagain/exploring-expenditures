@@ -96,6 +96,10 @@ def get_curology(transactions, return_selected=False):
     idx = transactions.original_description.str.contains('(?i)curology')
     return sum_amounts(transactions[idx], return_selected)
 
+def get_native(transactions, return_selected=False):
+    idx = transactions.original_description.str.contains('(?i)native')
+    return sum_amounts(transactions[idx], return_selected)
+
 def get_debitize_payments(transactions, return_selected=False):
     idx = transactions.original_description.str.contains('(?i)debitize|mail remittance payment received|ach payment received')
     return sum_amounts(transactions[idx], return_selected)
