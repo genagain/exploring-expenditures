@@ -80,6 +80,10 @@ def get_groceries(transactions, return_selected=False):
     idx = transactions.original_description.str.contains('(?i)instacart|star market|wegmans|wholefds')
     return sum_amounts(transactions[idx], return_selected)
 
+def get_spotify(transactions, return_selected=False):
+    idx = transactions.original_description.str.contains('(?i)spotify')
+    return sum_amounts(transactions[idx], return_selected)
+
 def get_debitize_payments(transactions, return_selected=False):
     idx = transactions.original_description.str.contains('(?i)debitize|mail remittance payment received|ach payment received')
     return sum_amounts(transactions[idx], return_selected)
@@ -111,6 +115,7 @@ def get_fixed_costs(transactions, return_selected=False):
     utilities = get_utilities(transactions, return_selected)
     phone_bill = get_phone_bill(transactions, return_selected)
     groceries = get_groceries(transactions, return_selected)
+    # TODO add all fixed costs
     breakdown = get_net_qapital_breakdown(transactions, return_selected)
 
     if return_selected:
