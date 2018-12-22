@@ -2,6 +2,7 @@ from datetime import datetime
 from freezegun import freeze_time
 import pytest
 import pandas as pd
+import numpy as np
 import incomestatement
 from collections import OrderedDict
 
@@ -75,8 +76,8 @@ def test_get_net_qapital_breakdown(test_transactions):
   july, august, september = test_transactions
 
   expected_breakdowns = [
-    OrderedDict([('transactions', july), ('fixed_costs', 540), ('investments', 200), ('savings_goals', 100)]),
-    OrderedDict([('transactions', august), ('fixed_costs', 540), ('investments', 200), ('savings_goals', 100)]),
+    OrderedDict([('transactions', july), ('fixed_costs', 335), ('investments', 300), ('savings_goals', 0)]),
+    OrderedDict([('transactions', august), ('fixed_costs', 335), ('investments', 300), ('savings_goals', 0)]),
     OrderedDict([('transactions', september), ('fixed_costs', -482.0), ('investments', 0), ('savings_goals', 0)]),
   ]
 
@@ -84,6 +85,8 @@ def test_get_net_qapital_breakdown(test_transactions):
     month = expected_breakdown.pop('transactions')
     breakdown = incomestatement.get_net_qapital_breakdown(month)
     assert breakdown == expected_breakdown
+
+# TODO test_get_net_qapital_breakdown for a week
 
 def test_get_net_venmo(test_transactions):
   july, august, september = test_transactions
@@ -139,6 +142,12 @@ def test_get_groceries(test_transactions):
   assert incomestatement.get_groceries(july) == 271.04
   assert incomestatement.get_groceries(august) == 122.43
   assert incomestatement.get_groceries(september) == 218.22
+
+# def test_get_groceries(test_transactions):
+  # july, august, september = test_transactions
+  # assert incomestatement.get_groceries(july) == 271.04
+  # assert incomestatement.get_groceries(august) == 122.43
+  # assert incomestatement.get_groceries(september) == 218.22
 
 def test_get_groceries_return_selected(test_transactions):
   for month in test_transactions:
@@ -199,8 +208,8 @@ def test_fixed_costs(test_transactions):
   july, august, september = test_transactions
 
   expected_fixed_costs = [
-    {'transactions': july, 'expected_cost': 1033.92},
-    {'transactions': august, 'expected_cost': 3403.49},
+    {'transactions': july, 'expected_cost': 828.92},
+    {'transactions': august, 'expected_cost': 3198.49},
     {'transactions': september, 'expected_cost': 2490.6},
   ]
 
@@ -211,7 +220,8 @@ def test_fixed_costs(test_transactions):
     phone_bill = incomestatement.get_phone_bill(month)
     groceries = incomestatement.get_groceries(month)
     breakdown = incomestatement.get_net_qapital_breakdown(month)
-    assert incomestatement.get_fixed_costs(month) == rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
+    fixed_costs = rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
+    assert incomestatement.get_fixed_costs(month) == np.round(fixed_costs, 2)
     assert incomestatement.get_fixed_costs(month) == fixed_cost['expected_cost']
 
 def test_fixed_costs_return_selected(test_transactions):
@@ -228,8 +238,8 @@ def test_fixed_costs_return_selected(test_transactions):
 
 def test_get_investments(test_transactions):
   july, august, september = test_transactions
-  assert incomestatement.get_investments(july) == 525
-  assert incomestatement.get_investments(august) == 550
+  assert incomestatement.get_investments(july) == 625
+  assert incomestatement.get_investments(august) == 650
   assert incomestatement.get_investments(september) == 300
 
 def test_get_investments_select_returned(test_transactions):
@@ -241,8 +251,8 @@ def test_get_investments_select_returned(test_transactions):
 
 def test_get_savings_goals(test_transactions):
   july, august, september = test_transactions
-  assert incomestatement.get_savings_goals(july) == 100
-  assert incomestatement.get_savings_goals(august) == 100
+  assert incomestatement.get_savings_goals(july) == 0
+  assert incomestatement.get_savings_goals(august) == 0
   assert incomestatement.get_savings_goals(september) == 0
 
 def test_get_discretionary_spending(test_transactions):
@@ -425,8 +435,8 @@ def test_conscious_spending_maintainance_week_to_day(monkeypatch):
     weeks_transactions_summary = pd.read_csv('week_to_day_summary_30_9_2018.csv')
 
     expected_summary = pd.DataFrame([
-      {'category':'Fixed Costs', 'actual_amount':457.60, 'expected_amount':175, 'actual_percentage':31.09, 'expected_percentage':15.2},
-      {'category':'Long Term Investments', 'actual_amount':75.00, 'expected_amount':300, 'actual_percentage':5.09, 'expected_percentage':26.1},
+      {'category':'Fixed Costs', 'actual_amount':353.60, 'expected_amount':175, 'actual_percentage':24.02, 'expected_percentage':15.2},
+      {'category':'Long Term Investments', 'actual_amount':179.00, 'expected_amount':300, 'actual_percentage':12.16, 'expected_percentage':26.1},
       {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':375, 'actual_percentage':0, 'expected_percentage':32.6},
       {'category':'Spending Money', 'actual_amount':939.46, 'expected_amount':300, 'actual_percentage':63.82, 'expected_percentage':26.1},
     ])
@@ -529,10 +539,10 @@ def test_conscious_spending_maintainance_last_month(monkeypatch):
     weeks_transactions_summary = pd.read_csv('last_month_summary_30_9_2018.csv')
 
     expected_summary = pd.DataFrame([
-      {'category':'Fixed Costs', 'actual_amount':3403.49, 'expected_amount':2800, 'actual_percentage':31.48, 'expected_percentage':41.5},
-      {'category':'Long Term Investments', 'actual_amount':550.00, 'expected_amount':1200, 'actual_percentage':5.09, 'expected_percentage':17},
-      {'category':'Savings Goals', 'actual_amount':100.00, 'expected_amount':1500, 'actual_percentage':0.92, 'expected_percentage':23},
-      {'category':'Spending Money', 'actual_amount':6759.78, 'expected_amount':1250, 'actual_percentage':62.51, 'expected_percentage':18.5},
+      {'category':'Fixed Costs', 'actual_amount':3198.49, 'expected_amount':2800, 'actual_percentage':30.15, 'expected_percentage':41.5},
+      {'category':'Long Term Investments', 'actual_amount':650.00, 'expected_amount':1200, 'actual_percentage':6.13, 'expected_percentage':17},
+      {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':1500, 'actual_percentage':0.0, 'expected_percentage':23},
+      {'category':'Spending Money', 'actual_amount':6759.78, 'expected_amount':1250, 'actual_percentage':63.72, 'expected_percentage':18.5},
     ])
 
     assert weeks_transactions_summary.equals(expected_summary)

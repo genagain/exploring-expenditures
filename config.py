@@ -3,7 +3,7 @@ from collections import OrderedDict
 OPTIMAL_BREAKDOWN = OrderedDict([
   ('fixed_costs', 335),
   ('investments', 300),
-  ('savings_goals', 100)
+  ('savings_goals', 0)
 ])
 
 EXPECTED_SUMMARY = {

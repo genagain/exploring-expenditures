@@ -116,7 +116,8 @@ def get_fixed_costs(transactions, return_selected=False):
     if return_selected:
       return pd.concat([rent, utilities, phone_bill, groceries])
     else:
-      return rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
+      fixed_costs = rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
+      return np.round(fixed_costs, 2)
 
 def get_savings_goals(transactions, return_selected=False):
     breakdown = get_net_qapital_breakdown(transactions)
