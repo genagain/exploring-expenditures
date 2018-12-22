@@ -84,6 +84,10 @@ def get_spotify(transactions, return_selected=False):
     idx = transactions.original_description.str.contains('(?i)spotify')
     return sum_amounts(transactions[idx], return_selected)
 
+def get_digital_ocean(transactions, return_selected=False):
+    idx = transactions.original_description.str.contains('(?i)digitalocean')
+    return sum_amounts(transactions[idx], return_selected)
+
 def get_debitize_payments(transactions, return_selected=False):
     idx = transactions.original_description.str.contains('(?i)debitize|mail remittance payment received|ach payment received')
     return sum_amounts(transactions[idx], return_selected)
