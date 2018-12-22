@@ -143,12 +143,6 @@ def test_get_groceries(test_transactions):
   assert incomestatement.get_groceries(august) == 122.43
   assert incomestatement.get_groceries(september) == 218.22
 
-# def test_get_groceries(test_transactions):
-  # july, august, september = test_transactions
-  # assert incomestatement.get_groceries(july) == 271.04
-  # assert incomestatement.get_groceries(august) == 122.43
-  # assert incomestatement.get_groceries(september) == 218.22
-
 def test_get_groceries_return_selected(test_transactions):
   for month in test_transactions:
     selected_records = incomestatement.get_groceries(month, return_selected=True)
