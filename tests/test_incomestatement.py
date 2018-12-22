@@ -143,6 +143,36 @@ def test_get_groceries(test_transactions):
   assert incomestatement.get_groceries(august) == 122.43
   assert incomestatement.get_groceries(september) == 218.22
 
+def test_get_spotify(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_spotify(july) == 0
+  assert incomestatement.get_spotify(august) == 9.99
+  assert incomestatement.get_spotify(september) == 9.99
+
+def test_get_digital_ocean(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_digital_ocean(july) == 6
+  assert incomestatement.get_digital_ocean(august) == 6
+  assert incomestatement.get_digital_ocean(september) == 6
+
+def test_get_audible(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_audible(july) == 14.95
+  assert incomestatement.get_audible(august) == 14.95
+  assert incomestatement.get_audible(september) == 14.95
+
+def test_get_curology(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_curology(july) == 0
+  assert incomestatement.get_curology(august) == 0
+  assert incomestatement.get_curology(september) == 0
+
+def test_get_native(test_transactions):
+  july, august, september = test_transactions
+  assert incomestatement.get_native(july) == 0
+  assert incomestatement.get_native(august) == 0
+  assert incomestatement.get_native(september) == 0
+
 def test_get_groceries_return_selected(test_transactions):
   for month in test_transactions:
     selected_records = incomestatement.get_groceries(month, return_selected=True)
@@ -201,10 +231,11 @@ def test_get_unnecessary_fees_return_selected(test_transactions):
 def test_fixed_costs(test_transactions):
   july, august, september = test_transactions
 
+  # 30.9
   expected_fixed_costs = [
-    {'transactions': july, 'expected_cost': 828.92},
-    {'transactions': august, 'expected_cost': 3198.49},
-    {'transactions': september, 'expected_cost': 2490.6},
+    {'transactions': july, 'expected_cost': 849.87},
+    {'transactions': august, 'expected_cost': 3229.43},
+    {'transactions': september, 'expected_cost': 2521.54},
   ]
 
   for fixed_cost in expected_fixed_costs:
@@ -213,8 +244,14 @@ def test_fixed_costs(test_transactions):
     utilities = incomestatement.get_utilities(month)
     phone_bill = incomestatement.get_phone_bill(month)
     groceries = incomestatement.get_groceries(month)
+    spotify = incomestatement.get_spotify(month)
+    digital_ocean = incomestatement.get_digital_ocean(month)
+    audible = incomestatement.get_audible(month)
+    curology = incomestatement.get_curology(month)
+    native = incomestatement.get_native(month)
     breakdown = incomestatement.get_net_qapital_breakdown(month)
-    fixed_costs = rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
+
+    fixed_costs = rent + utilities + phone_bill + groceries + spotify + digital_ocean + audible + curology + native + breakdown['fixed_costs']
     assert incomestatement.get_fixed_costs(month) == np.round(fixed_costs, 2)
     assert incomestatement.get_fixed_costs(month) == fixed_cost['expected_cost']
 
@@ -224,10 +261,15 @@ def test_fixed_costs_return_selected(test_transactions):
     utilities = incomestatement.get_utilities(month, return_selected=True)
     phone_bill = incomestatement.get_phone_bill(month, return_selected=True)
     groceries = incomestatement.get_groceries(month, return_selected=True)
+    spotify = incomestatement.get_spotify(month, return_selected=True)
+    digital_ocean = incomestatement.get_digital_ocean(month, return_selected=True)
+    audible = incomestatement.get_audible(month, return_selected=True)
+    curology = incomestatement.get_curology(month, return_selected=True)
+    native = incomestatement.get_native(month, return_selected=True)
 
     fixed_costs_records = incomestatement.get_fixed_costs(month, return_selected=True)
 
-    expected_fixed_cost_records = pd.concat([rent, utilities, phone_bill, groceries])
+    expected_fixed_cost_records = pd.concat([rent, utilities, phone_bill, groceries, spotify, digital_ocean, audible, curology, native])
     assert fixed_costs_records.equals(expected_fixed_cost_records)
 
 def test_get_investments(test_transactions):
@@ -429,10 +471,10 @@ def test_conscious_spending_maintainance_week_to_day(monkeypatch):
     weeks_transactions_summary = pd.read_csv('week_to_day_summary_30_9_2018.csv')
 
     expected_summary = pd.DataFrame([
-      {'category':'Fixed Costs', 'actual_amount':353.60, 'expected_amount':210, 'actual_percentage':24.02, 'expected_percentage':17.3},
-      {'category':'Long Term Investments', 'actual_amount':179.00, 'expected_amount':250, 'actual_percentage':12.16, 'expected_percentage':20.5},
+      {'category':'Fixed Costs', 'actual_amount':363.59, 'expected_amount':210, 'actual_percentage':24.53, 'expected_percentage':17.3},
+      {'category':'Long Term Investments', 'actual_amount':179.00, 'expected_amount':250, 'actual_percentage':12.08, 'expected_percentage':20.5},
       {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':250, 'actual_percentage':0, 'expected_percentage':20.5},
-      {'category':'Spending Money', 'actual_amount':939.46, 'expected_amount':500, 'actual_percentage':63.82, 'expected_percentage':41.7},
+      {'category':'Spending Money', 'actual_amount':939.46, 'expected_amount':500, 'actual_percentage':63.39, 'expected_percentage':41.7},
     ])
 
     assert weeks_transactions_summary.equals(expected_summary)
@@ -481,10 +523,10 @@ def test_conscious_spending_maintainance_month_to_day(monkeypatch):
     weeks_transactions_summary = pd.read_csv('month_to_day_summary_30_9_2018.csv')
 
     expected_summary = pd.DataFrame([
-      {'category':'Fixed Costs', 'actual_amount':2490.60, 'expected_amount':2700, 'actual_percentage':20.24, 'expected_percentage':40},
-      {'category':'Long Term Investments', 'actual_amount':300.00, 'expected_amount':1000, 'actual_percentage':2.44, 'expected_percentage':15},
+      {'category':'Fixed Costs', 'actual_amount':2521.54, 'expected_amount':2700, 'actual_percentage':20.44, 'expected_percentage':40},
+      {'category':'Long Term Investments', 'actual_amount':300.00, 'expected_amount':1000, 'actual_percentage':2.43, 'expected_percentage':15},
       {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':1000, 'actual_percentage':0, 'expected_percentage':15},
-      {'category':'Spending Money', 'actual_amount':9512.01, 'expected_amount':2000, 'actual_percentage':77.32, 'expected_percentage':30},
+      {'category':'Spending Money', 'actual_amount':9512.01, 'expected_amount':2000, 'actual_percentage':77.12, 'expected_percentage':30},
     ])
 
     assert weeks_transactions_summary.equals(expected_summary)
@@ -533,10 +575,10 @@ def test_conscious_spending_maintainance_last_month(monkeypatch):
     weeks_transactions_summary = pd.read_csv('last_month_summary_30_9_2018.csv')
 
     expected_summary = pd.DataFrame([
-      {'category':'Fixed Costs', 'actual_amount':3198.49, 'expected_amount':2700, 'actual_percentage':30.15, 'expected_percentage':40},
-      {'category':'Long Term Investments', 'actual_amount':650.00, 'expected_amount':1000, 'actual_percentage':6.13, 'expected_percentage':15},
+      {'category':'Fixed Costs', 'actual_amount':3229.43, 'expected_amount':2700, 'actual_percentage':30.35, 'expected_percentage':40},
+      {'category':'Long Term Investments', 'actual_amount':650.00, 'expected_amount':1000, 'actual_percentage':6.11, 'expected_percentage':15},
       {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':1000, 'actual_percentage':0.0, 'expected_percentage':15},
-      {'category':'Spending Money', 'actual_amount':6759.78, 'expected_amount':2000, 'actual_percentage':63.72, 'expected_percentage':30},
+      {'category':'Spending Money', 'actual_amount':6759.78, 'expected_amount':2000, 'actual_percentage':63.54, 'expected_percentage':30},
     ])
 
     assert weeks_transactions_summary.equals(expected_summary)

@@ -9,4 +9,5 @@ chromedriver
 *.pyc
 *.swp
 *.swo
+*.swn
 *.csv

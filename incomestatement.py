@@ -80,6 +80,26 @@ def get_groceries(transactions, return_selected=False):
     idx = transactions.original_description.str.contains('(?i)instacart|star market|wegmans|wholefds')
     return sum_amounts(transactions[idx], return_selected)
 
+def get_spotify(transactions, return_selected=False):
+    idx = transactions.original_description.str.contains('(?i)spotify')
+    return sum_amounts(transactions[idx], return_selected)
+
+def get_digital_ocean(transactions, return_selected=False):
+    idx = transactions.original_description.str.contains('(?i)digitalocean')
+    return sum_amounts(transactions[idx], return_selected)
+
+def get_audible(transactions, return_selected=False):
+    idx = transactions.original_description.str.contains('(?i)audible')
+    return sum_amounts(transactions[idx], return_selected)
+
+def get_curology(transactions, return_selected=False):
+    idx = transactions.original_description.str.contains('(?i)curology')
+    return sum_amounts(transactions[idx], return_selected)
+
+def get_native(transactions, return_selected=False):
+    idx = transactions.original_description.str.contains('(?i)native')
+    return sum_amounts(transactions[idx], return_selected)
+
 def get_debitize_payments(transactions, return_selected=False):
     idx = transactions.original_description.str.contains('(?i)debitize|mail remittance payment received|ach payment received')
     return sum_amounts(transactions[idx], return_selected)
@@ -111,12 +131,17 @@ def get_fixed_costs(transactions, return_selected=False):
     utilities = get_utilities(transactions, return_selected)
     phone_bill = get_phone_bill(transactions, return_selected)
     groceries = get_groceries(transactions, return_selected)
+    spotify = get_spotify(transactions, return_selected)
+    digital_ocean = get_digital_ocean(transactions, return_selected)
+    audible = get_audible(transactions, return_selected)
+    curology = get_curology(transactions, return_selected)
+    native = get_native(transactions, return_selected)
     breakdown = get_net_qapital_breakdown(transactions, return_selected)
 
     if return_selected:
-      return pd.concat([rent, utilities, phone_bill, groceries])
+      return pd.concat([rent, utilities, phone_bill, groceries, spotify, digital_ocean, audible, curology, native])
     else:
-      fixed_costs = rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
+      fixed_costs = rent + utilities + phone_bill + groceries + spotify + digital_ocean + audible + curology + native + breakdown['fixed_costs']
       return np.round(fixed_costs, 2)
 
 def get_savings_goals(transactions, return_selected=False):
