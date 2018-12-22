@@ -131,13 +131,17 @@ def get_fixed_costs(transactions, return_selected=False):
     utilities = get_utilities(transactions, return_selected)
     phone_bill = get_phone_bill(transactions, return_selected)
     groceries = get_groceries(transactions, return_selected)
-    # TODO add all fixed costs
+    spotify = get_spotify(transactions, return_selected)
+    digital_ocean = get_digital_ocean(transactions, return_selected)
+    audible = get_audible(transactions, return_selected)
+    curology = get_curology(transactions, return_selected)
+    native = get_native(transactions, return_selected)
     breakdown = get_net_qapital_breakdown(transactions, return_selected)
 
     if return_selected:
-      return pd.concat([rent, utilities, phone_bill, groceries])
+      return pd.concat([rent, utilities, phone_bill, groceries, spotify, digital_ocean, audible, curology, native])
     else:
-      fixed_costs = rent + utilities + phone_bill + groceries + breakdown['fixed_costs']
+      fixed_costs = rent + utilities + phone_bill + groceries + spotify + digital_ocean + audible + curology + native + breakdown['fixed_costs']
       return np.round(fixed_costs, 2)
 
 def get_savings_goals(transactions, return_selected=False):
