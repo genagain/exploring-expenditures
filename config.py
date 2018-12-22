@@ -9,56 +9,56 @@ OPTIMAL_BREAKDOWN = OrderedDict([
 EXPECTED_SUMMARY = {
   'week to day': {
     'Fixed Costs': {
-      'amount':175,
-      'percentage':15.2
+      'amount':210,
+      'percentage':17.3
     },
     'Long Term Investments': {
-      'amount':300,
-      'percentage':26.1
+      'amount':250,
+      'percentage':20.5
     },
     'Savings Goals': {
-      'amount':375,
-      'percentage':32.6
+      'amount':250,
+      'percentage':20.5
     },
     'Spending Money': {
-      'amount':300,
-      'percentage':26.1
+      'amount':500,
+      'percentage':41.7
     }
   },
   'month to day': {
     'Fixed Costs': {
-      'amount':2800,
-      'percentage':41.5
+      'amount':2700,
+      'percentage':40
     },
     'Long Term Investments': {
-      'amount':1200,
-      'percentage':17
+      'amount':1000,
+      'percentage':15
     },
     'Savings Goals': {
-      'amount':1500,
-      'percentage':23
+      'amount':1000,
+      'percentage':15
     },
     'Spending Money': {
-      'amount':1250,
-      'percentage':18.5
+      'amount':2000,
+      'percentage':30
     }
   },
   'last month': {
     'Fixed Costs': {
-      'amount':2800,
-      'percentage':41.5
+      'amount':2700,
+      'percentage':40
     },
     'Long Term Investments': {
-      'amount':1200,
-      'percentage':17
+      'amount':1000,
+      'percentage':15
     },
     'Savings Goals': {
-      'amount':1500,
-      'percentage':23
+      'amount':1000,
+      'percentage':15
     },
     'Spending Money': {
-      'amount':1250,
-      'percentage':18.5
+      'amount':2000,
+      'percentage':30
     }
   }
 }

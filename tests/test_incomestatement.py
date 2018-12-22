@@ -435,10 +435,10 @@ def test_conscious_spending_maintainance_week_to_day(monkeypatch):
     weeks_transactions_summary = pd.read_csv('week_to_day_summary_30_9_2018.csv')
 
     expected_summary = pd.DataFrame([
-      {'category':'Fixed Costs', 'actual_amount':353.60, 'expected_amount':175, 'actual_percentage':24.02, 'expected_percentage':15.2},
-      {'category':'Long Term Investments', 'actual_amount':179.00, 'expected_amount':300, 'actual_percentage':12.16, 'expected_percentage':26.1},
-      {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':375, 'actual_percentage':0, 'expected_percentage':32.6},
-      {'category':'Spending Money', 'actual_amount':939.46, 'expected_amount':300, 'actual_percentage':63.82, 'expected_percentage':26.1},
+      {'category':'Fixed Costs', 'actual_amount':353.60, 'expected_amount':210, 'actual_percentage':24.02, 'expected_percentage':17.3},
+      {'category':'Long Term Investments', 'actual_amount':179.00, 'expected_amount':250, 'actual_percentage':12.16, 'expected_percentage':20.5},
+      {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':250, 'actual_percentage':0, 'expected_percentage':20.5},
+      {'category':'Spending Money', 'actual_amount':939.46, 'expected_amount':500, 'actual_percentage':63.82, 'expected_percentage':41.7},
     ])
 
     assert weeks_transactions_summary.equals(expected_summary)
@@ -487,10 +487,10 @@ def test_conscious_spending_maintainance_month_to_day(monkeypatch):
     weeks_transactions_summary = pd.read_csv('month_to_day_summary_30_9_2018.csv')
 
     expected_summary = pd.DataFrame([
-      {'category':'Fixed Costs', 'actual_amount':2490.60, 'expected_amount':2800, 'actual_percentage':20.24, 'expected_percentage':41.5},
-      {'category':'Long Term Investments', 'actual_amount':300.00, 'expected_amount':1200, 'actual_percentage':2.44, 'expected_percentage':17},
-      {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':1500, 'actual_percentage':0, 'expected_percentage':23},
-      {'category':'Spending Money', 'actual_amount':9512.01, 'expected_amount':1250, 'actual_percentage':77.32, 'expected_percentage':18.5},
+      {'category':'Fixed Costs', 'actual_amount':2490.60, 'expected_amount':2700, 'actual_percentage':20.24, 'expected_percentage':40},
+      {'category':'Long Term Investments', 'actual_amount':300.00, 'expected_amount':1000, 'actual_percentage':2.44, 'expected_percentage':15},
+      {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':1000, 'actual_percentage':0, 'expected_percentage':15},
+      {'category':'Spending Money', 'actual_amount':9512.01, 'expected_amount':2000, 'actual_percentage':77.32, 'expected_percentage':30},
     ])
 
     assert weeks_transactions_summary.equals(expected_summary)
@@ -539,10 +539,10 @@ def test_conscious_spending_maintainance_last_month(monkeypatch):
     weeks_transactions_summary = pd.read_csv('last_month_summary_30_9_2018.csv')
 
     expected_summary = pd.DataFrame([
-      {'category':'Fixed Costs', 'actual_amount':3198.49, 'expected_amount':2800, 'actual_percentage':30.15, 'expected_percentage':41.5},
-      {'category':'Long Term Investments', 'actual_amount':650.00, 'expected_amount':1200, 'actual_percentage':6.13, 'expected_percentage':17},
-      {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':1500, 'actual_percentage':0.0, 'expected_percentage':23},
-      {'category':'Spending Money', 'actual_amount':6759.78, 'expected_amount':1250, 'actual_percentage':63.72, 'expected_percentage':18.5},
+      {'category':'Fixed Costs', 'actual_amount':3198.49, 'expected_amount':2700, 'actual_percentage':30.15, 'expected_percentage':40},
+      {'category':'Long Term Investments', 'actual_amount':650.00, 'expected_amount':1000, 'actual_percentage':6.13, 'expected_percentage':15},
+      {'category':'Savings Goals', 'actual_amount':0, 'expected_amount':1000, 'actual_percentage':0.0, 'expected_percentage':15},
+      {'category':'Spending Money', 'actual_amount':6759.78, 'expected_amount':2000, 'actual_percentage':63.72, 'expected_percentage':30},
     ])
 
     assert weeks_transactions_summary.equals(expected_summary)
