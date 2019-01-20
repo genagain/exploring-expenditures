@@ -73,7 +73,7 @@ def get_rent(transactions, return_selected=False):
     return sum_amounts(transactions[idx], return_selected)
 
 def get_phone_bill(transactions, return_selected=False):
-    idx = transactions.original_description.str.contains('(?i)project fi')
+    idx = transactions.original_description.str.contains('(?i)project fi|google fi')
     return sum_amounts(transactions[idx], return_selected)
 
 def get_groceries(transactions, return_selected=False):
